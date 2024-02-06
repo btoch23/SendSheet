@@ -22,8 +22,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
-app.get('/', (req, res) => {
-    res.render('home')
+app.get('/', async (req, res) => {
+    const problems = await Problem.find({});
+    res.render('home', { problems })
 })
 
 app.listen(5000, () => {
