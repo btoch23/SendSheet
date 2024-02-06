@@ -24,7 +24,15 @@ app.use(morgan('dev'));
 
 app.get('/', async (req, res) => {
     const problems = await Problem.find({});
-    res.render('home', { problems })
+    
+    const date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth();
+    let year = date.getFullYear();
+
+    let currentDate = `${month}/${day}/${year}`
+
+    res.render('home', { problems, currentDate })
 })
 
 app.listen(5000, () => {
