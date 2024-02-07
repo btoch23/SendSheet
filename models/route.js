@@ -22,8 +22,8 @@ const RouteSchema = new Schema({
         default: false,
     },
     date: {
-        type: Date,
-        default: Date.now,
+        type: String,
+        default: new Date().toLocaleDateString('en-US'),
     }
 });
 

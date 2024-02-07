@@ -78,6 +78,14 @@ app.put('/problems/:id', async (req, res) => {
     res.redirect('/problems')
 })
 
+app.delete('/problems/:id', async (req, res) => {
+    const { id } = req.params;
+
+    await Boulder.findByIdAndDelete(id);
+    await Route.findByIdAndDelete(id);
+    res.redirect('/problems')
+})
+
 app.listen(5000, () => {
     console.log('Serving on port 5000')
 })

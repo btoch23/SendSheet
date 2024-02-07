@@ -6,8 +6,21 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-floating mb-3">
-                            <input value="<%= boulder.color %>" class="form-control" type="text" id="color"
-                                name="boulder[color]">
+                            <select class="form-select" name="boulder[color]" id="color">
+                                <option selcted>
+                                    <%= boulder.color %>
+                                </option>
+                                <option value="Red">Red</option>
+                                <option value="Blue">Blue</option>
+                                <option value="Yellow">Yellow</option>
+                                <option value="Pink">Pink</option>
+                                <option value="Purple">Purple</option>
+                                <option value="Green">Green</option>
+                                <option value="Orange">Orange</option>
+                                <option value="Black">Black</option>
+                                <option value="White">White</option>
+                                <option value="">Other</option>
+                            </select>
                             <label for="color">Color</label>
                         </div>
                     </div>
@@ -74,6 +87,11 @@
                     <button class="btn btn-success">Update Boulder</button>
                 </div>
             </form>
-            <a class="text-decoration-none" href="/problems">Back to Journal</a>
+            <div class="d-flex justify-content-between align-items-center">
+                <a class="text-decoration-none" href="/problems">Back to Journal</a>
+                <form action="/problems/<%= boulder._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-outline-danger">Delete Boulder</button>
+                </form>
+            </div>
         </div>
     </div>
