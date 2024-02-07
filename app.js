@@ -4,6 +4,7 @@ const ejsMate = require('ejs-mate');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const Problem = require('./models/problem');
+const methodOverride = require('method-override');
 
 mongoose.connect('mongodb://localhost:27017/sendSheet');
 
@@ -20,19 +21,26 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 app.use(morgan('dev'));
 
 app.get('/', async (req, res) => {
     const problems = await Problem.find({});
     
-    const date = new Date();
-    let day = date.getDate();
-    let month = date.getMonth();
-    let year = date.getFullYear();
+    const date = new Date().toLocaleDateString('en-US');
 
-    let currentDate = `${month}/${day}/${year}`
+    res.render('home', { problems, date })
+})
 
-    res.render('home', { problems, currentDate })
+app.get('/problems', async (req, res) => {
+    const problems = await Problem.find({});
+    const date = new Date().toLocaleDateString('en-US');
+
+    res.render('problems/journal', { problems, date });
+})
+
+app.get('/problems/new', (req, res) => {
+    res.render('problems/new');
 })
 
 app.listen(5000, () => {

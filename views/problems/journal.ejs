@@ -1,0 +1,67 @@
+<% layout('layouts/boilerplate') %>
+    <div class="container" id="sendContainer">
+        <h1 class="display-4 text-center">What Did I Send Today?</h1>
+        <div class="container d-flex justify-content-evenly">
+            <small class="text-body-secondary">
+                <strong>
+                    <%= date %>
+                </strong>
+            </small>
+            <a class="btn btn-success" href="/problems/new">Log Send</a>
+        </div>
+        <div class="container rounded w-75 bg-body-secondary d-flex justify-content-center mt-3">
+            <% for (let problem of problems) { %>
+                <% if (problem.type==='boulder' ) { %>
+                    <div class="row w-75 rounded bg-primary border border-black pt-3 my-2">
+                        <div class="col-md-4 text-center">
+                            <p>
+                                <strong>
+                                    <%= problem.title %>
+                                </strong>
+                            </p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <p>
+                                <em>
+                                    <%= problem.location %>
+                                </em>
+                            </p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <p>
+                                <%= problem.attempts %>
+                            </p>
+                        </div>
+                    </div>
+                    <% } else if (problem.type==='route' ) { %>
+                        <div class="row w-75 rounded bg-success border border-black pt-3 my-2">
+                            <div class="col-md-4 text-center">
+                                <p>
+                                    <strong>
+                                        <%= problem.title %>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <p>
+                                    <em>
+                                        <%= problem.location %>
+                                    </em>
+                                </p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <p>
+                                    <%= problem.attempts %>
+                                </p>
+                            </div>
+                        </div>
+                        <% } %>
+                            <% } %>
+        </div>
+    </div>
+    <div class="container md-6">
+        <h1 class="display-4 text-center">Projects</h1>
+        <div class="container d-flex justify-content-center">
+            <a class="btn btn-primary" href="/problems/new">Add Project</a>
+        </div>
+    </div>
