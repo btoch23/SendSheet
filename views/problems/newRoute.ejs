@@ -5,14 +5,15 @@
             <form action="/problems" method="POST">
                 <div class="row">
                     <div class="col-6">
-                        <div class="mb-3">
+                        <div class="form-floating mb-3">
                             <input placeholder="Color" class="form-control" type="text" id="color" name="route[color]">
+                            <label for="color">Color</label>
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="mb-3">
+                        <div class="form-floating mb-3">
                             <select class="form-select" name="route[grade]" id="grade">
-                                <option selcted>Choose Grade</option>
+                                <option selcted>--</option>
                                 <option value="5.6">5.6</option>
                                 <option value="5.7">5.7</option>
                                 <option value="5.8">5.8</option>
@@ -30,20 +31,23 @@
                                 <option value="5.13">5.13</option>
                                 <option value="5.13+">5.13+</option>
                             </select>
+                            <label for="grade">Choose Grade</label>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6">
-                        <div class="mb-3">
+                        <div class="form-floating mb-3">
                             <input placeholder="Number of Attempts" class="form-control" type="text"
                                 name="route[attempts]" id="attempts">
+                            <label for="attempts">Number of Attempts</label>
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="mb-3">
+                        <div class="form-floating mb-3">
                             <input placeholder="Location" class="form-control" type="text" name="route[location]"
                                 id="location">
+                            <label for="location">Location</label>
                         </div>
                     </div>
                 </div>

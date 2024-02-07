@@ -5,15 +5,16 @@
             <form action="/problems" method="POST">
                 <div class="row">
                     <div class="col-6">
-                        <div class="mb-3">
-                            <input placeholder="Color" class="form-control" type="text" id="color"
-                                name="boulder[color]">
+                        <div class="form-floating mb-3">
+                            <input class="form-control" type="text" id="color" name="boulder[color]"
+                                placeholder="color">
+                            <label for="color">Color</label>
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="mb-3">
+                        <div class="form-floating mb-3">
                             <select class="form-select" name="boulder[grade]" id="grade">
-                                <option selcted>Choose Grade</option>
+                                <option selcted>--</option>
                                 <option value="VB">VB</option>
                                 <option value="V0">V0</option>
                                 <option value="V1">V1</option>
@@ -26,20 +27,23 @@
                                 <option value="V8">V8</option>
                                 <option value="V9">V9</option>
                             </select>
+                            <label for="grade">Choose Grade</label>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6">
-                        <div class="mb-3">
+                        <div class="form-floating mb-3">
                             <input placeholder="Number of Attempts" class="form-control" type="text"
                                 name="boulder[attempts]" id="attempts">
+                            <label for="attempts">Number of Attempts</label>
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="mb-3">
+                        <div class="form-floating mb-3">
                             <input placeholder="Location" class="form-control" type="text" name="boulder[location]"
                                 id="location">
+                            <label for="location">Location</label>
                         </div>
                     </div>
                 </div>
