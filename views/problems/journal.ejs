@@ -13,8 +13,8 @@
         </div>
     </div>
     <div class="container d-flex flex-column flex-md-row">
-        <div class="container rounded md-6 mb-3 mx-2 pt-2 pb-3 bg-body-secondary" id="sendContainer">
-            <h1 class="display-4 text-center">Problems Sent Today</h1>
+        <div class="container rounded md-6 mb-3 mx-2 pt-2 pb-3 bg-white" id="sendContainer">
+            <h4 class="display-4 text-center">Problems Sent Today</h4>
             <div class="container d-flex justify-content-center mt-3">
                 <div class="container d-flex flex-column align-items-center">
                     <% for (let boulder of boulders) { %>
@@ -74,9 +74,9 @@
                 </div>
             </div>
         </div>
-        <div class="container rounded md-6 mb-3 mx-2 pt-2 pb-3 bg-body-secondary">
+        <div class="container rounded md-6 mb-3 mx-2 pt-2 pb-3 bg-white">
             <h1 class="display-4 text-center">Ongoing Projects</h1>
-            <div class="container rounded bg-body-secondary d-flex justify-content-center mt-3">
+            <div class="container rounded d-flex justify-content-center mt-3">
                 <div class="container d-flex flex-column align-items-center">
                     <% for (let boulder of boulders) { %>
                         <% if (!boulder.sent) { %>

@@ -6,8 +6,8 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-floating mb-3">
-                            <select class="form-select" name="boulder[color]" id="color">
-                                <option selcted>--</option>
+                            <select class="form-select" name="boulder[color]" id="color" required>
+                                <option selcted></option>
                                 <option value="Red">Red</option>
                                 <option value="Blue">Blue</option>
                                 <option value="Yellow">Yellow</option>
@@ -24,8 +24,8 @@
                     </div>
                     <div class="col-6">
                         <div class="form-floating mb-3">
-                            <select class="form-select" name="boulder[grade]" id="grade">
-                                <option selcted>--</option>
+                            <select class="form-select" name="boulder[grade]" id="grade" required>
+                                <option selcted></option>
                                 <option value="VB">VB</option>
                                 <option value="V0">V0</option>
                                 <option value="V1">V1</option>
@@ -45,8 +45,8 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-floating mb-3">
-                            <select class="form-select" name="boulder[attempts]" id="grade">
-                                <option selcted>--</option>
+                            <select class="form-select" name="boulder[attempts]" id="attempts" required>
+                                <option selcted></option>
                                 <option value="Onsighted">Onsighted</option>
                                 <option value="Flashed">Flashed</option>
                                 <option value="1">1</option>
@@ -66,7 +66,7 @@
                     <div class="col-6">
                         <div class="form-floating mb-3">
                             <input placeholder="Location" class="form-control" type="text" name="boulder[location]"
-                                id="location">
+                                id="location" required>
                             <label for="location">Location</label>
                         </div>
                     </div>

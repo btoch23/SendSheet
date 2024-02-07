@@ -6,8 +6,8 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-floating mb-3">
-                            <select class="form-select" name="route[color]" id="color">
-                                <option selcted>--</option>
+                            <select class="form-select" name="route[color]" id="color" required>
+                                <option selcted></option>
                                 <option value="Red">Red</option>
                                 <option value="Blue">Blue</option>
                                 <option value="Yellow">Yellow</option>
@@ -24,8 +24,8 @@
                     </div>
                     <div class="col-6">
                         <div class="form-floating mb-3">
-                            <select class="form-select" name="route[grade]" id="grade">
-                                <option selcted>--</option>
+                            <select class="form-select" name="route[grade]" id="grade" required>
+                                <option selcted></option>
                                 <option value="5.6">5.6</option>
                                 <option value="5.7">5.7</option>
                                 <option value="5.8">5.8</option>
@@ -50,8 +50,8 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-floating mb-3">
-                            <select class="form-select" name="route[attempts]" id="grade">
-                                <option selcted>--</option>
+                            <select class="form-select" name="route[attempts]" id="attempts" required>
+                                <option selcted></option>
                                 <option value="Onsighted">Onsighted</option>
                                 <option value="Flashed">Flashed</option>
                                 <option value="1">1</option>
@@ -71,7 +71,7 @@
                     <div class="col-6">
                         <div class="form-floating mb-3">
                             <input placeholder="Location" class="form-control" type="text" name="route[location]"
-                                id="location">
+                                id="location" required>
                             <label for="location">Location</label>
                         </div>
                     </div>

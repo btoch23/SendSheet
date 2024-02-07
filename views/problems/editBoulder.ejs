@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-floating mb-3">
-                            <select class="form-select" name="boulder[color]" id="color">
+                            <select class="form-select" name="boulder[color]" id="color" required>
                                 <option selcted>
                                     <%= boulder.color %>
                                 </option>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="col-6">
                         <div class="form-floating mb-3">
-                            <select class="form-select" name="boulder[grade]" id="grade">
+                            <select class="form-select" name="boulder[grade]" id="grade" required>
                                 <option selcted>
                                     <%= boulder.grade %>
                                 </option>
@@ -49,7 +49,7 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-floating mb-3">
-                            <select class="form-select" name="boulder[attempts]" id="grade">
+                            <select class="form-select" name="boulder[attempts]" id="attempts" required>
                                 <option selcted>
                                     <%= boulder.attempts %>
                                 </option>
@@ -72,7 +72,7 @@
                     <div class="col-6">
                         <div class="form-floating mb-3">
                             <input value="<%= boulder.location %>" class="form-control" type="text"
-                                name="boulder[location]" id="location">
+                                name="boulder[location]" id="location" required>
                             <label for="location">Location</label>
                         </div>
                     </div>
