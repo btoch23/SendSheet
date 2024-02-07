@@ -3,7 +3,8 @@ const path = require('path');
 const ejsMate = require('ejs-mate');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
-const Problem = require('./models/problem');
+const Boulder = require('./models/boulder')
+const Route = require('./models/route')
 const methodOverride = require('method-override');
 
 mongoose.connect('mongodb://localhost:27017/sendSheet');
@@ -25,22 +26,34 @@ app.use(methodOverride('_method'));
 app.use(morgan('dev'));
 
 app.get('/', async (req, res) => {
-    const problems = await Problem.find({});
-    
-    const date = new Date().toLocaleDateString('en-US');
-
-    res.render('home', { problems, date })
+    res.render('home')
 })
 
 app.get('/problems', async (req, res) => {
-    const problems = await Problem.find({});
+    const boulders = await Boulder.find({});
+    const routes = await Route.find({});
     const date = new Date().toLocaleDateString('en-US');
 
-    res.render('problems/journal', { problems, date });
+    res.render('problems/journal', { boulders, routes, date });
 })
 
-app.get('/problems/new', (req, res) => {
-    res.render('problems/new');
+app.get('/problems/newBoulder', (req, res) => {
+    res.render('problems/newBoulder');
+})
+
+app.get('/problems/newRoute', (req, res) => {
+    res.render('problems/newRoute');
+})
+
+app.post('/problems', async (req, res) => {
+    if (req.body.boulder) {
+        const boulder = new Boulder(req.body.boulder);
+        await boulder.save();
+    } else if (req.body.route) {
+        const route = new Route(req.body.route);
+        await route.save();
+    }
+    res.redirect('/problems');
 })
 
 app.listen(5000, () => {

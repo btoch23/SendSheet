@@ -1,0 +1,58 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row">
+        <h1 class="text-center">New Boulder</h1>
+        <div class="col-6 offset-3 mt-3">
+            <form action="/problems" method="POST">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <input placeholder="Color" class="form-control" type="text" id="color"
+                                name="boulder[color]">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <select class="form-select" name="boulder[grade]" id="grade">
+                                <option selcted>Choose Grade</option>
+                                <option value="VB">VB</option>
+                                <option value="V0">V0</option>
+                                <option value="V1">V1</option>
+                                <option value="V2">V2</option>
+                                <option value="V3">V3</option>
+                                <option value="V4">V4</option>
+                                <option value="V5">V5</option>
+                                <option value="V6">V6</option>
+                                <option value="V7">V7</option>
+                                <option value="V8">V8</option>
+                                <option value="V9">V9</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <input placeholder="Number of Attempts" class="form-control" type="text"
+                                name="boulder[attempts]" id="attempts">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <input placeholder="Location" class="form-control" type="text" name="boulder[location]"
+                                id="location">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" value="true" id="sent" name="boulder[sent]">
+                    <label class="form-check-label" for="sent">
+                        Did you send?
+                    </label>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-success">Add boulder</button>
+                </div>
+            </form>
+            <a href="/problems">Journal</a>
+        </div>
+    </div>

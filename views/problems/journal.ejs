@@ -7,56 +7,60 @@
                     <%= date %>
                 </strong>
             </small>
-            <a class="btn btn-success" href="/problems/new">Log Send</a>
+            <div class="btn-group" role="group">
+                <a class="btn btn-primary" href="/problems/newBoulder">Log Boulder</a>
+                <a class="btn btn-success" href="/problems/newRoute">Log Route</a>
+            </div>
         </div>
         <div class="container rounded w-75 bg-body-secondary d-flex justify-content-center mt-3">
-            <% for (let problem of problems) { %>
-                <% if (problem.type==='boulder' ) { %>
-                    <div class="row w-75 rounded bg-primary border border-black pt-3 my-2">
+            <div class="container d-flex flex-column align-items-center">
+                <% for (let boulder of boulders) { %>
+                    <div class="row w-75 rounded text-white bg-primary border border-black pt-3 my-2">
                         <div class="col-md-4 text-center">
                             <p>
                                 <strong>
-                                    <%= problem.title %>
+                                    <%= boulder.title %>
                                 </strong>
                             </p>
                         </div>
                         <div class="col-md-4 text-center">
                             <p>
                                 <em>
-                                    <%= problem.location %>
+                                    <%= boulder.location %>
                                 </em>
                             </p>
                         </div>
                         <div class="col-md-4 text-center">
                             <p>
-                                <%= problem.attempts %>
+                                <%= boulder.attempts %>
                             </p>
                         </div>
                     </div>
-                    <% } else if (problem.type==='route' ) { %>
-                        <div class="row w-75 rounded bg-success border border-black pt-3 my-2">
-                            <div class="col-md-4 text-center">
-                                <p>
-                                    <strong>
-                                        <%= problem.title %>
-                                    </strong>
-                                </p>
+                    <% } %>
+                        <% for (let route of routes) { %>
+                            <div class="row w-75 rounded bg-success border border-black pt-3 my-2">
+                                <div class="col-md-4 text-center">
+                                    <p>
+                                        <strong>
+                                            <%= route.title %>
+                                        </strong>
+                                    </p>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <p>
+                                        <em>
+                                            <%= route.location %>
+                                        </em>
+                                    </p>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <p>
+                                        <%= route.attempts %>
+                                    </p>
+                                </div>
                             </div>
-                            <div class="col-md-4 text-center">
-                                <p>
-                                    <em>
-                                        <%= problem.location %>
-                                    </em>
-                                </p>
-                            </div>
-                            <div class="col-md-4 text-center">
-                                <p>
-                                    <%= problem.attempts %>
-                                </p>
-                            </div>
-                        </div>
-                        <% } %>
                             <% } %>
+            </div>
         </div>
     </div>
     <div class="container md-6">

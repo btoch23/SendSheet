@@ -1,12 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const ProblemSchema = new Schema({
-    type: {
-        type: String,
-        enum: ['boulder', 'route'],
-        required: true,
-    },
+const BoulderSchema = new Schema({
     color: {
         type: String,
     },
@@ -33,18 +28,12 @@ const ProblemSchema = new Schema({
     }
 });
 
-ProblemSchema.virtual("title").get(function () {
-    let title = "";
+BoulderSchema.virtual("title").get(function () {
+    let title = `${this.color} ${this.grade}`
     
-    if (this.type === 'boulder') {
-        title = `${this.color} V${this.grade}`;
-    } else {
-        title = `${this.color} 5.${this.grade}`;
-    }
-
     return title;
 })
 
-const Problem = mongoose.model('Problem', ProblemSchema);
+const Boulder = mongoose.model('Boulder', BoulderSchema);
 
-module.exports = Problem;
+module.exports = Boulder;
