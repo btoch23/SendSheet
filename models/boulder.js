@@ -14,9 +14,8 @@ const BoulderSchema = new Schema({
         required: true,
     },
     attempts: {
-        type: Number,
+        type: String,
         required: true,
-        min: 1,
     },
     sent: {
         type: Boolean,

@@ -36,8 +36,23 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-floating mb-3">
-                            <input value="<%= boulder.attempts %>" class="form-control" type="text"
-                                name="boulder[attempts]" id="attempts">
+                            <select class="form-select" name="boulder[attempts]" id="grade">
+                                <option selcted>
+                                    <%= boulder.attempts %>
+                                </option>
+                                <option value="Onsighted">Onsighted</option>
+                                <option value="Flashed">Flashed</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10+">10+</option>
+                            </select>
                             <label for="attempts">Number of Attempts</label>
                         </div>
                     </div>
@@ -59,6 +74,6 @@
                     <button class="btn btn-success">Update Boulder</button>
                 </div>
             </form>
-            <a href="/problems">Back to Journal</a>
+            <a class="text-decoration-none" href="/problems">Back to Journal</a>
         </div>
     </div>
