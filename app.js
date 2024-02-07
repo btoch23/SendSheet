@@ -29,6 +29,13 @@ app.get('/', async (req, res) => {
     res.render('home')
 })
 
+app.get('/stats', async (req, res) => {
+    const boulders = await Boulder.find({});
+    const routes = await Route.find({});
+
+    res.render('stats', { boulders, routes })
+})
+
 app.get('/problems', async (req, res) => {
     const boulders = await Boulder.find({});
     const routes = await Route.find({});
