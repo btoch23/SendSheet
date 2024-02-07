@@ -19,9 +19,8 @@ const RouteSchema = new Schema({
         min: 1,
     },
     sent: {
-        type: String,
-        enum: ['yes', 'no'],
-        default: 'no',
+        type: Boolean,
+        default: false,
     },
     date: {
         type: Date,
@@ -30,7 +29,7 @@ const RouteSchema = new Schema({
 });
 
 RouteSchema.virtual("title").get(function () {
-    let title = `${this.color} 5.${this.grade}`
+    let title = `${this.color} ${this.grade}`
     
     return title;
 })

@@ -56,6 +56,17 @@ app.post('/problems', async (req, res) => {
     res.redirect('/problems');
 })
 
+app.get('/problems/:id/edit', async (req, res) => {
+    const boulder = await Boulder.findById(req.params.id);
+    const route = await Route.findById(req.params.id);
+
+    if (boulder) {
+        res.render('problems/editBoulder', { boulder })
+    } else if (route) {
+        res.render('problems/editRoute', { route })
+    }
+})
+
 app.listen(5000, () => {
     console.log('Serving on port 5000')
 })
