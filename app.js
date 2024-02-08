@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const Boulder = require('./models/boulder')
 const Route = require('./models/route')
 const methodOverride = require('method-override');
+const { bouldersSent, routesSent } = require('./utils/statCalculations')
 
 mongoose.connect('mongodb://localhost:27017/sendSheet');
 
@@ -35,6 +36,12 @@ app.get('/stats', async (req, res) => {
 
     let hardestBoulder = await Boulder.findOne();
     let hardestRoute = await Route.findOne({ attempts: {$in: ['Flashed', 'Onsighted']} });
+
+    let bouldersSentObj = await bouldersSent();
+    let bouldersSentArr = Object.entries(bouldersSentObj);
+
+    let routesSentObj = await routesSent();
+    let routesSentArr = Object.entries(routesSentObj)
 
     if (boulders) {
         for (let boulder of boulders) {
@@ -72,7 +79,7 @@ app.get('/stats', async (req, res) => {
         }
     }
 
-    res.render('stats', { boulders, routes, hardestBoulder, hardestRoute })
+    res.render('stats', { boulders, routes, hardestBoulder, hardestRoute, bouldersSentArr, routesSentArr })
 })
 
 app.get('/problems', async (req, res) => {

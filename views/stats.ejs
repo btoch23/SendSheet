@@ -9,6 +9,39 @@
                         <%= hardestBoulder.grade %>
                             <% } %>
             </h5>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row g-0">
+                        <% for (let arr of bouldersSentArr) { %>
+                            <div class="col-md-2">
+                                <p class="card-text text-start"><strong>
+                                        <%= arr[0] %>:
+                                    </strong>
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="card-text text-center">
+                                    <% if (arr[1][0] !==1) { %>
+                                        <%= arr[1][0] %> sends
+                                            <% } else { %>
+                                                <%= arr[1][0] %> send
+                                                    <% } %>
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="card-text text-center">
+                                    <%= arr[1][1] %> flashed
+                                </p>
+                            </div>
+                            <div class="col-md-2">
+                                <p class="card-text text-end">
+                                    <%= arr[1][2] %>%
+                                </p>
+                            </div>
+                            <% } %>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="container rounded md-6 mb-3 mx-2 pt-2 pb-3 bg-white">
             <h4 class="display-4 text-center">Hardest Route Flashed</h4>
