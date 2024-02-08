@@ -32,16 +32,11 @@ app.get('/', async (req, res) => {
 
 app.get('/stats', async (req, res) => {
     const boulders = await Boulder.find({});
-    const routes = await Route.find({});
-
+    
     let hardestBoulder = await Boulder.findOne();
-    let hardestRoute = await Route.findOne({ attempts: {$in: ['Flashed', 'Onsighted']} });
 
     let bouldersSentObj = await bouldersSent();
     let bouldersSentArr = Object.entries(bouldersSentObj);
-
-    let routesSentObj = await routesSent();
-    let routesSentArr = Object.entries(routesSentObj)
 
     if (boulders) {
         for (let boulder of boulders) {
@@ -54,7 +49,16 @@ app.get('/stats', async (req, res) => {
             }
         }
     }
-    
+
+    res.render('stats', { boulders, hardestBoulder, bouldersSentArr })
+})
+
+app.get('/stats/routes', async (req, res) => {
+    const routes = await Route.find({});
+    let hardestRoute = await Route.findOne({ attempts: {$in: ['Flashed', 'Onsighted']} });
+    let routesSentObj = await routesSent();
+    let routesSentArr = Object.entries(routesSentObj)
+
     if (routes) {
         for (let route of routes) {
             if (route.attempts === 'Flashed' || route.attempts === 'Onsighted') {
@@ -78,8 +82,8 @@ app.get('/stats', async (req, res) => {
             }
         }
     }
-
-    res.render('stats', { boulders, routes, hardestBoulder, hardestRoute, bouldersSentArr, routesSentArr })
+        
+    res.render('routeStats', { routes, hardestRoute, routesSentArr})
 })
 
 app.get('/problems', async (req, res) => {

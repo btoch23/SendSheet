@@ -1,28 +1,28 @@
 <% layout('layouts/boilerplate') %>
     <div class="container d-flex flex-column flex-md-row">
         <div class="container rounded mb-3 mx-2 pt-2 pb-3 bg-white">
-            <h4 class="display-4 text-center">Hardest Boulder Flashed</h4>
+            <h4 class="display-4 text-center">Hardest Route Flashed</h4>
             <h5 class="display-5 text-center">
-                <% if (hardestBoulder===null) { %>
+                <% if (hardestRoute===null) { %>
                     --
                     <% } else { %>
-                        <%= hardestBoulder.grade %>
+                        <%= hardestRoute.grade %>
                             <% } %>
             </h5>
             <div class="card mb-3">
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" href="/stats">Boulders</a>
+                            <a class="nav-link" href="/stats">Boulders</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/stats/routes">Routes</a>
+                            <a class="nav-link active" href="/stats/routes">Routes</a>
                         </li>
                     </ul>
                 </div>
                 <div class="card-body">
                     <div class="row g-0">
-                        <% for (let arr of bouldersSentArr) { %>
+                        <% for (let arr of routesSentArr) { %>
                             <div class="col-md-2">
                                 <p class="card-text text-start"><strong>
                                         <%= arr[0] %>:

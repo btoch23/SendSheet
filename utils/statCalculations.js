@@ -4,6 +4,8 @@ const Route = require('../models/route')
 module.exports.bouldersSent = async () => {
     //define an object containing difficulty keys with array values that contain number of sent boulders, flashed boulders, and flash percentage
     const totalSends = {
+        VB: [0, 0, 0],
+        V0: [0, 0, 0],
         V1: [0, 0, 0],
         V2: [0, 0, 0],
         V3: [0, 0, 0],
