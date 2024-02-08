@@ -52,7 +52,6 @@ app.get('/stats', async (req, res) => {
         for (let route of routes) {
             if (route.attempts === 'Flashed' || route.attempts === 'Onsighted') {
                 let grade = route.grade.slice(2);
-
                 if (!Number(grade)) {
                     grade = Number(grade.slice(0, 2));
                 } else {
@@ -60,9 +59,8 @@ app.get('/stats', async (req, res) => {
                 }
 
                 let highestGrade = hardestRoute.grade.slice(2);
-
                 if (!Number(highestGrade)) {
-                    highestGrade = highestGrade.slice(0, 2);
+                    highestGrade = Number(highestGrade.slice(0, 2));
                 } else {
                     highestGrade = Number(highestGrade);
                 }
