@@ -34,11 +34,11 @@ app.get('/stats', async (req, res) => {
     const routes = await Route.find({});
 
     let hardestBoulder = await Boulder.findOne();
-    let hardestRoute = await Route.findOne();
+    let hardestRoute = await Route.findOne({ attempts: {$in: ['Flashed', 'Onsighted']} });
 
     if (boulders) {
         for (let boulder of boulders) {
-            if (boulder.sent) {
+            if (boulder.attempts === 'Flashed' || boulder.attempts === 'Onsighted') {
                 let grade = Number(boulder.grade.slice(1));
                 let highestGrade = Number(hardestBoulder.grade.slice(1));
                 if (grade > highestGrade) {
@@ -50,9 +50,23 @@ app.get('/stats', async (req, res) => {
     
     if (routes) {
         for (let route of routes) {
-            if (route.sent) {
-                let grade = Number(route.grade.slice(1));
-                let highestGrade = Number(hardestRoute.grade.slice(1));
+            if (route.attempts === 'Flashed' || route.attempts === 'Onsighted') {
+                let grade = route.grade.slice(2);
+
+                if (!Number(grade)) {
+                    grade = Number(grade.slice(0, 2));
+                } else {
+                    grade = Number(grade);
+                }
+
+                let highestGrade = hardestRoute.grade.slice(2);
+
+                if (!Number(highestGrade)) {
+                    highestGrade = highestGrade.slice(0, 2);
+                } else {
+                    highestGrade = Number(highestGrade);
+                }
+
                 if (grade > highestGrade) {
                     hardestRoute = route;
                 }

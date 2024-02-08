@@ -65,7 +65,12 @@
                                                 </div>
                                                 <div class="col-md-4 text-center">
                                                     <p>
-                                                        <%= route.attempts %> attempts
+                                                        <% if (route.attempts==='Flashed' ||
+                                                            route.attempts==='Onsighted' ) { %>
+                                                            <%= route.attempts %>
+                                                                <% } else { %>
+                                                                    <%= route.attempts %> attempts
+                                                                        <% } %>
                                                     </p>
                                                 </div>
                                             </div>

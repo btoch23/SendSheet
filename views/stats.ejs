@@ -2,14 +2,22 @@
     <div class="container d-flex flex-column flex-md-row">
         <div class="container rounded md-6 mb-3 mx-2 pt-2 pb-3 bg-white">
             <h4 class="display-4 text-center">Hardest Boulder Flashed</h4>
-            <h5 class="display-5">
-                <%= hardestBoulder.grade %>
+            <h5 class="display-5 text-center">
+                <% if (hardestBoulder===null) { %>
+                    --
+                    <% } else { %>
+                        <%= hardestBoulder.grade %>
+                            <% } %>
             </h5>
         </div>
         <div class="container rounded md-6 mb-3 mx-2 pt-2 pb-3 bg-white">
-            <h4 class="display-4 text-center">Highest Grade Flashed</h4>
-            <h5 class="display-5">
-                <%= hardestRoute.grade %>
+            <h4 class="display-4 text-center">Hardest Route Flashed</h4>
+            <h5 class="display-5 text-center">
+                <% if (hardestRoute===null) { %>
+                    --
+                    <% } else { %>
+                        <%= hardestRoute.grade %>
+                            <% } %>
             </h5>
         </div>
     </div>
