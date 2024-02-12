@@ -30,7 +30,7 @@ app.get('/', async (req, res) => {
     res.render('home')
 })
 
-app.get('/stats', async (req, res) => {
+app.get('/stats/boulders', async (req, res) => {
     const boulders = await Boulder.find({});
     
     let hardestBoulder = await Boulder.findOne();
@@ -50,7 +50,7 @@ app.get('/stats', async (req, res) => {
         }
     }
 
-    res.render('stats', { boulders, hardestBoulder, bouldersSentArr })
+    res.render('boulderStats', { boulders, hardestBoulder, bouldersSentArr })
 })
 
 app.get('/stats/routes', async (req, res) => {
