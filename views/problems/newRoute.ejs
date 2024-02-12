@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate') %>
     <div class="row">
         <h1 class="text-center">New Route</h1>
-        <div class="col-6 offset-3 mt-3">
+        <div class="col-6 offset-3 mt-5">
             <form action="/problems" method="POST">
                 <div class="row">
                     <div class="col-6">
@@ -70,8 +70,7 @@
                     </div>
                     <div class="col-6">
                         <div class="form-floating mb-3">
-                            <input placeholder="Location" class="form-control" type="text" name="route[location]"
-                                id="location" required>
+                            <input placeholder="Location" class="form-control" type="text" name="route[location]" id="location" required>
                             <label for="location">Location</label>
                         </div>
                     </div>
@@ -83,9 +82,9 @@
                     </label>
                 </div>
                 <div class="mb-3">
-                    <button class="btn btn-success">Log Route</button>
+                    <button style="background-color: #588157; color: white;" class="btn">Log Route</button>
                 </div>
             </form>
-            <a class="text-decoration-none" href="/problems">Back to Journal</a>
+            <a style="color: #ee6352;" class="text-decoration-none" href="/problems">Cancel</a>
         </div>
     </div>
