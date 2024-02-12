@@ -77,3 +77,64 @@ module.exports.routesSent = async () => {
     //return the object
     return totalSends;
 };
+
+module.exports.hardestFlashedBoulder = async () => {
+    const boulders = await Boulder.find({});
+
+    let hardestBoulder = await Boulder.findOne({ attempts: {$in: ['Flashed', 'Onsighted']} });
+
+    if (boulders) {
+        for (let boulder of boulders) {
+            if (boulder.attempts === 'Flashed' || boulder.attempts === 'Onsighted') {
+                let grade = Number(boulder.grade.slice(1));
+                let highestGrade = 0;
+                if (hardestBoulder) {
+                    highestGrade = Number(hardestBoulder.grade.slice(1));
+                }
+                
+                if (grade > highestGrade) {
+                    hardestBoulder = boulder;
+                }
+            }
+        }
+    }
+
+    return hardestBoulder;
+};
+
+module.exports.hardestFlashedRoute = async () => {
+    const routes = await Route.find({});
+
+    let hardestRoute = await Route.findOne({ attempts: {$in: ['Flashed', 'Onsighted']} });
+
+    if (routes) {
+        for (let route of routes) {
+            if (route.attempts === 'Flashed' || route.attempts === 'Onsighted') {
+                let grade = route.grade.slice(2);
+
+                if (!Number(grade)) {
+                    grade = Number(grade.slice(0, 2));
+                } else {
+                    grade = Number(grade);
+                }
+
+                let highestGrade = 0;
+
+                if (hardestRoute) {
+                    highestGrade = hardestRoute.grade.slice(2);
+                    if (!Number(highestGrade)) {
+                        highestGrade = Number(highestGrade.slice(0, 2));
+                    } else {
+                        highestGrade = Number(highestGrade);
+                    }
+                }
+                
+                if (grade > highestGrade) {
+                    hardestRoute = route;
+                }
+            }
+        }
+    }
+
+    return hardestRoute;
+}

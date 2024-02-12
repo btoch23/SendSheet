@@ -6,7 +6,12 @@ const morgan = require('morgan');
 const Boulder = require('./models/boulder')
 const Route = require('./models/route')
 const methodOverride = require('method-override');
-const { bouldersSent, routesSent } = require('./utils/statCalculations')
+const { 
+    bouldersSent, 
+    routesSent, 
+    hardestFlashedBoulder, 
+    hardestFlashedRoute 
+} = require('./utils/statCalculations')
 
 mongoose.connect('mongodb://localhost:27017/sendSheet');
 
@@ -32,56 +37,22 @@ app.get('/', async (req, res) => {
 
 app.get('/stats/boulders', async (req, res) => {
     const boulders = await Boulder.find({});
-    
-    let hardestBoulder = await Boulder.findOne();
 
     let bouldersSentObj = await bouldersSent();
     let bouldersSentArr = Object.entries(bouldersSentObj);
 
-    if (boulders) {
-        for (let boulder of boulders) {
-            if (boulder.attempts === 'Flashed' || boulder.attempts === 'Onsighted') {
-                let grade = Number(boulder.grade.slice(1));
-                let highestGrade = Number(hardestBoulder.grade.slice(1));
-                if (grade > highestGrade) {
-                    hardestBoulder = boulder;
-                }
-            }
-        }
-    }
+    let hardestBoulder = await hardestFlashedBoulder();
 
     res.render('boulderStats', { boulders, hardestBoulder, bouldersSentArr })
 })
 
 app.get('/stats/routes', async (req, res) => {
     const routes = await Route.find({});
-    let hardestRoute = await Route.findOne({ attempts: {$in: ['Flashed', 'Onsighted']} });
+
+    let hardestRoute = await hardestFlashedRoute();
+
     let routesSentObj = await routesSent();
     let routesSentArr = Object.entries(routesSentObj)
-
-    if (routes) {
-        for (let route of routes) {
-            if (route.attempts === 'Flashed' || route.attempts === 'Onsighted') {
-                let grade = route.grade.slice(2);
-                if (!Number(grade)) {
-                    grade = Number(grade.slice(0, 2));
-                } else {
-                    grade = Number(grade);
-                }
-
-                let highestGrade = hardestRoute.grade.slice(2);
-                if (!Number(highestGrade)) {
-                    highestGrade = Number(highestGrade.slice(0, 2));
-                } else {
-                    highestGrade = Number(highestGrade);
-                }
-
-                if (grade > highestGrade) {
-                    hardestRoute = route;
-                }
-            }
-        }
-    }
         
     res.render('routeStats', { routes, hardestRoute, routesSentArr})
 })
