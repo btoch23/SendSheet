@@ -4,7 +4,6 @@ const Route = require('../models/route')
 module.exports.bouldersSent = async () => {
     //define an object containing difficulty keys with array values that contain number of sent boulders, flashed boulders, and flash percentage
     const totalSends = {
-        VB: [0, 0, 0],
         V0: [0, 0, 0],
         V1: [0, 0, 0],
         V2: [0, 0, 0],
@@ -42,22 +41,18 @@ module.exports.routesSent = async () => {
         "5.7": [0, 0, 0],
         "5.8": [0, 0, 0],
         "5.9": [0, 0, 0],
-        "5.10a": [0, 0, 0],
-        "5.10b": [0, 0, 0],
-        "5.10c": [0, 0, 0],
-        "5.10d": [0, 0, 0],
-        "5.11a": [1, 0, 0],
-        "5.11b": [0, 0, 0],
-        "5.11c": [0, 0, 0],
-        "5.11d": [0, 0, 0],
-        "5.12a": [0, 0, 0],
-        "5.12b": [0, 0, 0],
-        "5.12c": [0, 0, 0],
-        "5.12d": [0, 0, 0],
-        "5.13a": [0, 0, 0],
-        "5.13b": [0, 0, 0],
-        "5.13c": [0, 0, 0],
-        "5.13d": [0, 0, 0],
+        "5.10-": [0, 0, 0],
+        "5.10": [0, 0, 0],
+        "5.10+": [0, 0, 0],
+        "5.11-": [0, 0, 0],
+        "5.11": [0, 0, 0],
+        "5.11+": [0, 0, 0],
+        "5.12-": [0, 0, 0],
+        "5.12": [0, 0, 0],
+        "5.12+": [0, 0, 0],
+        "5.13-": [0, 0, 0],
+        "5.13": [0, 0, 0],
+        "5.13+": [0, 0, 0],
     }
     //grab all routes that have been sent
     const sentRoutes = await Route.find({ sent: true });
