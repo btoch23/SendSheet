@@ -1,24 +1,33 @@
-<nav class="navbar sticky-top navbar-expand-lg py-4 bg-white">
+<nav class="navbar sticky-top navbar-expand-md py-4 bg-white">
     <div class="container-fluid">
-        <span class="material-symbols-outlined ms-4 me-2">
-            <a style="color: #588157" class="text-decoration-none" href="/">landscape</a>
-
-        </span>
-        <a style="color: #588157" class="navbar-brand" href="/">
-            SendSheet
-        </a>
+        <div class="navbar-nav flex-row align-items-center">
+            <span class="material-symbols-outlined d-md-none ms-4 me-2">
+                <a style="color: #588157" class="text-decoration-none" href="/">landscape</a>
+            </span>
+            <a style="color: #588157;" class="navbar-brand d-md-none" href="/">
+                SendSheet
+            </a>
+        </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav me-auto">
+            <div class="navbar-nav ms-4 me-auto">
                 <a class="nav-link" href="/problems">Journal</a>
                 <a class="nav-link" href="/stats/boulders">Statistics</a>
                 <a class="nav-link" href="/about">About</a>
             </div>
-            <span class="navbar-nav me-4">
-                <a style="background-color: #a3b18a;" class="rounded nav-link px-3 mx-2" href="/users/signup">Sign Up</a>
-                <a class="nav-link" href="/users/login">Log In</a>
+            <div class="navbar-nav mx-auto align-items-center">
+                <span class="material-symbols-outlined d-none d-md-block me-2">
+                    <a style="color: #588157; font-size: 2.5rem;" class="text-decoration-none" href="/">landscape</a>
+                </span>
+                <a style="color: #588157; font-size: 2rem;" class="navbar-brand d-none d-md-block" href="/">
+                    SendSheet
+                </a>
+            </div>
+            <span class="navbar-nav me-4 ms-auto">
+                <a class="nav-link ps-4" href="/users/login">Log In</a>
+                <a style="background-color: #a3b18a;" class="rounded nav-link ps-4 px-md-3 mx-md-2" href="/users/signup">Sign Up</a>
             </span>
         </div>
     </div>
