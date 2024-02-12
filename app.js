@@ -3,15 +3,7 @@ const path = require('path');
 const ejsMate = require('ejs-mate');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
-const Boulder = require('./models/boulder')
-const Route = require('./models/route')
 const methodOverride = require('method-override');
-const { 
-    bouldersSent, 
-    routesSent, 
-    hardestFlashedBoulder, 
-    hardestFlashedRoute 
-} = require('./utils/statCalculations')
 
 mongoose.connect('mongodb://localhost:27017/sendSheet');
 
