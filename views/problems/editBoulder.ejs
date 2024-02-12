@@ -70,17 +70,16 @@
                     </div>
                     <div class="col-6">
                         <div class="form-floating mb-3">
-                            <input value="<%= boulder.location %>" class="form-control" type="text"
-                                name="boulder[location]" id="location" required>
+                            <input value="<%= boulder.location %>" class="form-control" type="text" name="boulder[location]" id="location" required>
                             <label for="location">Location</label>
                         </div>
                     </div>
                 </div>
                 <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="true" id="sent" name="boulder[sent]">
-                    <label class="form-check-label" for="sent">
-                        Did you send?
-                    </label>
+                    <input class="form-check-input" type="checkbox" value="true" id="sent" name="boulder[sent]" <% if (boulder.sent) { %> checked disabled <% } %>>
+                        <label class="form-check-label" for="sent">
+                            Did you send?
+                        </label>
                 </div>
                 <div class="mb-3">
                     <button class="btn btn-success">Update Boulder</button>

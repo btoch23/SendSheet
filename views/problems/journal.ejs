@@ -20,21 +20,21 @@
                     <% for (let boulder of boulders) { %>
                         <% if (boulder.sent && boulder.date===date) { %>
                             <div class="row rounded w-100 text-white bg-primary pt-3 my-2">
-                                <div class="col-4 text-center">
+                                <div class="col-4 col-md-3 text-center">
                                     <p>
                                         <strong>
                                             <%= boulder.title %>
                                         </strong>
                                     </p>
                                 </div>
-                                <div class="col-4 text-center">
+                                <div class="d-none d-md-block col-md-3 text-center">
                                     <p>
                                         <em>
                                             <%= boulder.location %>
                                         </em>
                                     </p>
                                 </div>
-                                <div class="col-4 text-center">
+                                <div class="col-4 col-md-3 text-center">
                                     <p>
                                         <% if (boulder.attempts==='Flashed' || boulder.attempts==='Onsighted' ) { %>
                                             <%= boulder.attempts %>
@@ -43,35 +43,44 @@
                                                         <% } %>
                                     </p>
                                 </div>
+                                <div class="col-4 col-md-3 text-center">
+                                    <strong>
+                                        <a class="text-warning text-decoration-none" href="/problems/<%= boulder._id %>/edit">Update</a>
+                                    </strong>
+                                </div>
                             </div>
                             <% } %>
                                 <% } %>
                                     <% for (let route of routes) { %>
                                         <% if (route.sent && route.date===date) { %>
                                             <div class="row rounded w-100 bg-success text-white pt-3 my-2">
-                                                <div class="col-4 text-center">
+                                                <div class="col-4 col-md-3 text-center">
                                                     <p>
                                                         <strong>
                                                             <%= route.title %>
                                                         </strong>
                                                     </p>
                                                 </div>
-                                                <div class="col-4 text-center">
+                                                <div class="col-md-3 d-none d-md-block text-center">
                                                     <p>
                                                         <em>
                                                             <%= route.location %>
                                                         </em>
                                                     </p>
                                                 </div>
-                                                <div class="col-4 text-center">
+                                                <div class="col-4 col-md-3 text-center">
                                                     <p>
-                                                        <% if (route.attempts==='Flashed' ||
-                                                            route.attempts==='Onsighted' ) { %>
+                                                        <% if (route.attempts==='Flashed' ||route.attempts==='Onsighted' ) { %>
                                                             <%= route.attempts %>
                                                                 <% } else { %>
                                                                     <%= route.attempts %> attempts
                                                                         <% } %>
                                                     </p>
+                                                </div>
+                                                <div class="col-4 col-md-3 text-center">
+                                                    <strong>
+                                                        <a class="text-warning text-decoration-none" href="/problems/<%= route._id %>/edit">Update</a>
+                                                    </strong>
                                                 </div>
                                             </div>
                                             <% } %>
@@ -107,8 +116,7 @@
                                 </div>
                                 <div class="col-4 col-md-3 text-center">
                                     <strong>
-                                        <a class="text-warning text-decoration-none"
-                                            href="/problems/<%= boulder._id %>/edit">Update</a>
+                                        <a class="text-warning text-decoration-none" href="/problems/<%= boulder._id %>/edit">Update</a>
                                     </strong>
                                 </div>
                             </div>
@@ -138,8 +146,7 @@
                                                 </div>
                                                 <div class="col-4 col-md-3 text-center">
                                                     <strong>
-                                                        <a class="text-warning text-decoration-none"
-                                                            href="/problems/<%= route._id %>/edit">Update</a>
+                                                        <a class="text-warning text-decoration-none" href="/problems/<%= route._id %>/edit">Update</a>
                                                     </strong>
                                                 </div>
                                             </div>
