@@ -1,15 +1,18 @@
 <% layout('layouts/boilerplate') %>
-    <div class="container d-flex justify-content-center">
-        <h5 class="display-5">
-            Today's Date: <strong>
+    <div class="container d-flex flex-column align-items-center">
+        <h5 class="display-5 d-flex-block">
+            Today's Climbing Journal
+        </h5>
+        <h5 class="display-5 d-flex-block">
+            <strong>
                 <%= date %>
             </strong>
         </h5>
     </div>
-    <div class="container d-flex justify-content-center mb-5">
+    <div class="container d-flex justify-content-center mb-4">
         <div class="container w-md-50 d-flex justify-content-center mt-3">
-            <a class="btn btn-primary me-3" href="/problems/newBoulder">Log Boulder</a>
-            <a class="btn btn-success ms-3" href="/problems/newRoute">Log Route</a>
+            <a style="background-color: #586994; color: #fff;" class="btn me-3" href="/problems/newBoulder">Log Boulder</a>
+            <a style="background-color: #588157; color: #fff;" class="btn ms-3" href="/problems/newRoute">Log Route</a>
         </div>
     </div>
     <div class="container d-flex flex-column flex-xl-row">
@@ -19,7 +22,7 @@
                 <div class="container d-flex flex-column align-items-center">
                     <% for (let boulder of boulders) { %>
                         <% if (boulder.sent && boulder.date===date) { %>
-                            <div class="row rounded w-100 text-white bg-primary pt-3 my-2">
+                            <div style="background-color: #586994;" class="row rounded w-100 text-white pt-3 my-2">
                                 <div class="col-4 col-md-3 text-center">
                                     <p>
                                         <strong>
@@ -53,7 +56,7 @@
                                 <% } %>
                                     <% for (let route of routes) { %>
                                         <% if (route.sent && route.date===date) { %>
-                                            <div class="row rounded w-100 bg-success text-white pt-3 my-2">
+                                            <div style="background-color: #588157;" class="row rounded w-100 text-white pt-3 my-2">
                                                 <div class="col-4 col-md-3 text-center">
                                                     <p>
                                                         <strong>
@@ -94,7 +97,7 @@
                 <div class="container d-flex flex-column align-items-center">
                     <% for (let boulder of boulders) { %>
                         <% if (!boulder.sent) { %>
-                            <div class="row w-100 rounded text-white bg-primary ps-2 pt-3 my-2">
+                            <div style="background-color: #586994;" class="row w-100 rounded text-white ps-2 pt-3 my-2">
                                 <div class="col-4 col-md-3 text-center">
                                     <p>
                                         <strong>
@@ -124,7 +127,7 @@
                                 <% } %>
                                     <% for (let route of routes) { %>
                                         <% if (!route.sent) { %>
-                                            <div class="row rounded w-100 bg-success text-white ps-2 pt-3 my-2">
+                                            <div style="background-color: #588157;" class="row rounded w-100 text-white ps-2 pt-3 my-2">
                                                 <div class="col-4 col-md-3 text-center">
                                                     <p>
                                                         <strong>
