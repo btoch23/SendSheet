@@ -19,7 +19,7 @@ statsRouter.route('/boulders')
 
     let hardestBoulder = await hardestFlashedBoulder();
 
-    res.render('boulderStats', { boulders, hardestBoulder, bouldersSentArr })
+    res.render('problems/boulderStats', { boulders, hardestBoulder, bouldersSentArr })
 })
 
 statsRouter.route('/routes')
@@ -31,7 +31,7 @@ statsRouter.route('/routes')
     let routesSentObj = await routesSent();
     let routesSentArr = Object.entries(routesSentObj)
         
-    res.render('routeStats', { routes, hardestRoute, routesSentArr})
+    res.render('problems/routeStats', { routes, hardestRoute, routesSentArr})
 })
 
 module.exports = statsRouter;
