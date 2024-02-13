@@ -82,13 +82,13 @@
                         </label>
                 </div>
                 <div class="mb-3">
-                    <button style="background-color: #586994; color: #fff;" class="btn">Update Boulder</button>
+                    <button onmouseover="boulderBtnMouseover(this)" onmouseout="boulderBtnMouseout(this)" style="background-color: #586994; color: #fff;" class="btn">Update Boulder</button>
                 </div>
             </form>
             <div class="d-flex justify-content-between align-items-center">
                 <a style="color: #ee6352;" class="text-decoration-none" href="/problems">Cancel</a>
                 <form action="/problems/<%= boulder._id %>?_method=DELETE" method="POST">
-                    <button onmouseover="fill(this)" onmouseout="unfill(this)" style="border: 1px solid #ee6352; color: #ee6352;" class="btn">Delete Boulder</button>
+                    <button onmouseover="fillDeleteBtn(this)" onmouseout="unfillDeleteBtn(this)" style="border: 1px solid #ee6352; color: #ee6352;" class="btn">Delete Boulder</button>
                 </form>
             </div>
         </div>
