@@ -97,12 +97,13 @@
                 <div class="container d-flex flex-column align-items-center">
                     <% for (let boulder of boulders) { %>
                         <% if (!boulder.sent) { %>
-                            <div style="background-color: #586994;" class="row w-100 rounded text-white ps-2 pt-3 my-2">
+                            <div style="background-color: #586994;" class="row w-100 align-items-center rounded text-white ps-2 pt-3 my-2">
                                 <div class="col-4 col-md-3 text-center">
                                     <p>
                                         <strong>
                                             <%= boulder.title %>
                                         </strong>
+                                        <%= boulder.date %>
                                     </p>
                                 </div>
                                 <div class="col-md-3 d-none d-md-block text-center">
@@ -117,7 +118,7 @@
                                         <%= boulder.attempts %> attempts
                                     </p>
                                 </div>
-                                <div class="col-4 col-md-3 text-center">
+                                <div class="col-4 col-md-3 text-center mb-3">
                                     <a onmouseover="updateBtnMouseover(this)" onmouseout="updateBtnMouseout(this)" style="border: 1px solid #F6ACA2; color: #F6ACA2;" class="text-decoration-none rounded px-3 py-2" href="/problems/<%= boulder._id %>/edit">
                                         Update
                                     </a>
@@ -127,12 +128,13 @@
                                 <% } %>
                                     <% for (let route of routes) { %>
                                         <% if (!route.sent) { %>
-                                            <div style="background-color: #588157;" class="row rounded w-100 text-white ps-2 pt-3 my-2">
+                                            <div style="background-color: #588157;" class="row rounded align-items-center w-100 text-white ps-2 pt-3 my-2">
                                                 <div class="col-4 col-md-3 text-center">
                                                     <p>
                                                         <strong>
                                                             <%= route.title %>
                                                         </strong>
+                                                        <%= route.date %>
                                                     </p>
                                                 </div>
                                                 <div class="col-md-3 d-none d-md-block text-center">
@@ -147,7 +149,7 @@
                                                         <%= route.attempts %> attempts
                                                     </p>
                                                 </div>
-                                                <div class="col-4 col-md-3 text-center">
+                                                <div class="col-4 col-md-3 mb-3 text-center">
                                                     <a onmouseover="updateBtnMouseover(this)" onmouseout="updateBtnMouseout(this)" style="border: 1px solid #F6ACA2; color: #F6ACA2;" class="text-decoration-none rounded px-3 py-2" href="/problems/<%= route._id %>/edit">
                                                         Update
                                                     </a>

@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate') %>
     <div class="container d-flex flex-column flex-md-row">
-        <div class="container rounded mb-3 mx-2 pt-2 pb-3 bg-white">
+        <div class="container rounded mb-3 mx-2 pt-2 pb-3 mb-5 bg-white">
             <h4 class="display-4 text-center">Hardest Route Flashed</h4>
             <h5 class="display-5 text-center"><strong>
                     <% if (hardestRoute===null) { %>
@@ -12,10 +12,10 @@
             </h5>
             <div class="container d-flex justify-content-center mt-4">
                 <div class="card mb-3 w-75">
-                    <div class="card-header">
+                    <div style="background-color: #588157;" class="card-header">
                         <ul class="nav nav-tabs card-header-tabs">
                             <li class="nav-item">
-                                <a class="nav-link" href="/stats/boulders">Boulders</a>
+                                <a class="nav-link text-white" href="/stats/boulders">Boulders</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="/stats/routes">Routes</a>
@@ -25,13 +25,13 @@
                     <div class="card-body">
                         <div class="row g-0">
                             <% for (let arr of routesSentArr) { %>
-                                <div class="col-sm-2">
+                                <div class="col-2 mb-1 border-bottom border-black">
                                     <p class="card-text text-start"><strong>
-                                            <%= arr[0] %>:
+                                            <%= arr[0] %>
                                         </strong>
                                     </p>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-4 mb-1 border-bottom border-black">
                                     <p class="card-text text-center">
                                         <% if (arr[1][0] !==1) { %>
                                             <%= arr[1][0] %> sends
@@ -40,14 +40,15 @@
                                                         <% } %>
                                     </p>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-4 mb-1 border-bottom border-black">
                                     <p class="card-text text-center">
                                         <%= arr[1][1] %> flashed
                                     </p>
                                 </div>
-                                <div class="col-sm-2">
-                                    <p class="card-text text-end">
-                                        <%= arr[1][2] %>%
+                                <div class="col-2 mb-1 border-bottom border-black">
+                                    <p class="card-text text-end"><strong>
+                                            <%= arr[1][2] %>%
+                                        </strong>
                                     </p>
                                 </div>
                                 <% } %>
