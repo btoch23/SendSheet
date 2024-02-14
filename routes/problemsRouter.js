@@ -2,8 +2,20 @@ const express = require('express');
 const Boulder = require('../models/boulder');
 const Route = require('../models/route');
 const catchAsync = require('../utils/catchAsync');
+const { problemSchema } = require('../schemas');
+const ExpressError = require('../utils/ExpressError');
 
 const problemsRouter = express.Router();
+
+const validateProblem = (req, res, next) => {
+    const { error } = problemSchema.validate(req.body)
+    if (error) {
+        const msg = error.details.map(el => el.message).join(',')
+        throw new ExpressError(msg, 400)
+    } else {
+        next();
+    }
+}
 
 problemsRouter.route('/')
 .get(catchAsync(async (req, res) => {
@@ -13,7 +25,7 @@ problemsRouter.route('/')
 
     res.render('problems/journal', { boulders, routes, date });
 }))
-.post(catchAsync(async (req, res) => {
+.post(validateProblem, catchAsync(async (req, res) => {
     if (req.body.boulder) {
         const boulder = new Boulder(req.body.boulder);
         await boulder.save();
@@ -25,7 +37,7 @@ problemsRouter.route('/')
 }))
 
 problemsRouter.route('/:id')
-.put(catchAsync(async (req, res) => {
+.put(validateProblem, catchAsync(async (req, res) => {
     const { id } = req.params;
 
     if (req.body.boulder) {
