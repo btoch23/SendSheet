@@ -1,18 +1,19 @@
 const express = require('express');
 const Boulder = require('../models/boulder');
 const Route = require('../models/route');
+const catchAsync = require('../utils/catchAsync');
 
 const problemsRouter = express.Router();
 
 problemsRouter.route('/')
-.get(async (req, res) => {
+.get(catchAsync(async (req, res) => {
     const boulders = await Boulder.find({});
     const routes = await Route.find({});
     const date = new Date().toLocaleDateString('en-US');
 
     res.render('problems/journal', { boulders, routes, date });
-})
-.post(async (req, res) => {
+}))
+.post(catchAsync(async (req, res) => {
     if (req.body.boulder) {
         const boulder = new Boulder(req.body.boulder);
         await boulder.save();
@@ -21,10 +22,10 @@ problemsRouter.route('/')
         await route.save();
     }
     res.redirect('/problems');
-})
+}))
 
 problemsRouter.route('/:id')
-.put(async (req, res) => {
+.put(catchAsync(async (req, res) => {
     const { id } = req.params;
 
     if (req.body.boulder) {
@@ -33,17 +34,17 @@ problemsRouter.route('/:id')
         await Route.findByIdAndUpdate(id, { ...req.body.route });
     }
     res.redirect('/problems')
-})
-.delete(async (req, res) => {
+}))
+.delete(catchAsync(async (req, res) => {
     const { id } = req.params;
 
     await Boulder.findByIdAndDelete(id);
     await Route.findByIdAndDelete(id);
     res.redirect('/problems')
-})
+}))
 
 problemsRouter.route('/:id/edit')
-.get(async (req, res) => {
+.get(catchAsync(async (req, res) => {
     const boulder = await Boulder.findById(req.params.id);
     const route = await Route.findById(req.params.id);
 
@@ -52,7 +53,7 @@ problemsRouter.route('/:id/edit')
     } else if (route) {
         res.render('problems/editRoute', { route })
     }
-})
+}))
 
 problemsRouter.route('/newBoulder')
 .get((req, res) => {

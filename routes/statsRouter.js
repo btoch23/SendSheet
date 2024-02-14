@@ -7,11 +7,12 @@ const {
     hardestFlashedBoulder, 
     hardestFlashedRoute 
 } = require('../utils/statCalculations');
+const catchAsync = require('../utils/catchAsync');
 
 const statsRouter = express.Router();
 
 statsRouter.route('/boulders')
-.get(async (req, res) => {
+.get(catchAsync(async (req, res) => {
     const boulders = await Boulder.find({});
 
     let bouldersSentObj = await bouldersSent();
@@ -20,10 +21,10 @@ statsRouter.route('/boulders')
     let hardestBoulder = await hardestFlashedBoulder();
 
     res.render('problems/boulderStats', { boulders, hardestBoulder, bouldersSentArr })
-})
+}))
 
 statsRouter.route('/routes')
-.get(async (req, res) => {
+.get(catchAsync(async (req, res) => {
     const routes = await Route.find({});
 
     let hardestRoute = await hardestFlashedRoute();
@@ -32,6 +33,6 @@ statsRouter.route('/routes')
     let routesSentArr = Object.entries(routesSentObj)
         
     res.render('problems/routeStats', { routes, hardestRoute, routesSentArr})
-})
+}))
 
 module.exports = statsRouter;

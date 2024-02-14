@@ -4,6 +4,7 @@ const ejsMate = require('ejs-mate');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
+const ExpressError = require('./utils/ExpressError');
 
 mongoose.connect('mongodb://localhost:27017/sendSheet');
 
@@ -35,6 +36,16 @@ app.get('/', (req, res) => {
 
 app.get('/about', (req, res) => {
     res.render('about')
+})
+
+app.all('*', (req, res, next) => {
+    next(new ExpressError('Page Not Found', 404))
+})
+
+app.use((err, req, res, next) => {
+    const { statusCode = 500 } = err;
+    if (!err.message) err.message = 'Oh no, something went wrong!'
+    res.status(statusCode).render('error', { err })
 })
 
 app.listen(5000, () => {
