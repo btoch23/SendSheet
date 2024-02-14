@@ -2,7 +2,7 @@
     <div class="row">
         <h1 class="text-center">Edit Boulder</h1>
         <div class="col-6 offset-3 mt-5">
-            <form action="/problems/<%= boulder._id %>?_method=PUT" method="POST">
+            <form action="/problems/<%= boulder._id %>?_method=PUT" method="POST" novalidate class="validated-form">
                 <div class="row">
                     <div class="col-6">
                         <div class="form-floating mb-3">
@@ -22,6 +22,12 @@
                                 <option value="">Other</option>
                             </select>
                             <label for="color">Color</label>
+                            <div class="invalid-feedback">
+                                Please choose a color
+                            </div>
+                            <div class="valid-feedback">
+                                Looks good
+                            </div>
                         </div>
                     </div>
                     <div class="col-6">
@@ -42,6 +48,12 @@
                                 <option value="V9">V9</option>
                             </select>
                             <label for="grade">Choose Grade</label>
+                            <div class="invalid-feedback">
+                                Please choose a grade
+                            </div>
+                            <div class="valid-feedback">
+                                Looks good
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -66,12 +78,24 @@
                                 <option value="10+">10+</option>
                             </select>
                             <label for="attempts">Number of Attempts</label>
+                            <div class="invalid-feedback">
+                                Required
+                            </div>
+                            <div class="valid-feedback">
+                                Looks good
+                            </div>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-floating mb-3">
                             <input value="<%= boulder.location %>" class="form-control" type="text" name="boulder[location]" id="location" required>
                             <label for="location">Location</label>
+                            <div class="invalid-feedback">
+                                Please enter a location
+                            </div>
+                            <div class="valid-feedback">
+                                Looks good
+                            </div>
                         </div>
                     </div>
                 </div>
