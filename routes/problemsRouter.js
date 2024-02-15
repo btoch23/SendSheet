@@ -33,7 +33,7 @@ problemsRouter.route('/')
         const route = new Route(req.body.route);
         await route.save();
     }
-    req.flash('success', 'Successfully logged a new problem!')
+    req.flash('success', 'Successfully logged a new problem')
     res.redirect('/problems');
 }))
 
@@ -46,6 +46,7 @@ problemsRouter.route('/:id')
     } else if (req.body.route) {
         await Route.findByIdAndUpdate(id, { ...req.body.route });
     }
+    req.flash('success', 'Successfully updated problem');
     res.redirect('/problems')
 }))
 .delete(catchAsync(async (req, res) => {
@@ -53,6 +54,7 @@ problemsRouter.route('/:id')
 
     await Boulder.findByIdAndDelete(id);
     await Route.findByIdAndDelete(id);
+    req.flash('success', 'Successfully deleted problem');
     res.redirect('/problems')
 }))
 
@@ -60,6 +62,11 @@ problemsRouter.route('/:id/edit')
 .get(catchAsync(async (req, res) => {
     const boulder = await Boulder.findById(req.params.id);
     const route = await Route.findById(req.params.id);
+
+    if (!boulder && !route) {
+        req.flash('error', 'Cannot find that problem');
+        res.redirect('/problems');
+    }
 
     if (boulder) {
         res.render('problems/editBoulder', { boulder })
