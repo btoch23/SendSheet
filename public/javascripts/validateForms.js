@@ -1,5 +1,3 @@
-//FORM VALIDATION
-
 (() => {
     'use strict'
 
