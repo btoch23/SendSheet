@@ -33,6 +33,7 @@ problemsRouter.route('/')
         const route = new Route(req.body.route);
         await route.save();
     }
+    req.flash('success', 'Successfully logged a new problem!')
     res.redirect('/problems');
 }))
 

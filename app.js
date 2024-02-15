@@ -3,6 +3,7 @@ const path = require('path');
 const ejsMate = require('ejs-mate');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const flash = require('connect-flash');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
 const ExpressError = require('./utils/ExpressError');
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash());
 
 const sessionConfig = {
     secret: 'thisshouldbeabettersecret',
@@ -40,6 +42,12 @@ const sessionConfig = {
     }
 };
 app.use(session(sessionConfig));
+
+app.use((req, res, next) => {
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
+    next();
+})
 
 app.use('/stats', statsRouter);
 app.use('/problems', problemsRouter);
