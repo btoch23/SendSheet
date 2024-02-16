@@ -9,13 +9,16 @@ usersRouter.route('/register')
 .get((req, res) => {
     res.render('users/register')
 })
-.post(catchAsync(async(req, res) => {
+.post(catchAsync(async(req, res, next) => {
     try {
         const { email, username, password } = req.body;
         const user = new User({email, username});
         const registeredUser = await User.register(user, password);
-        req.flash('success', 'Welcome to SendSheet!');
-        res.redirect('/problems');  
+        req.login(registeredUser, err => {
+            if (err) return next(err);
+            req.flash('success', 'Welcome to SendSheet!');
+            res.redirect('/problems');  
+        })
     } catch (e) {
         req.flash('error', e.message);
         res.redirect('register');
