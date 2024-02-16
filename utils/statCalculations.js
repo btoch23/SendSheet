@@ -1,7 +1,7 @@
 const Boulder = require('../models/boulder')
 const Route = require('../models/route')
 
-module.exports.bouldersSent = async () => {
+module.exports.bouldersSent = async (user) => {
     //define an object containing difficulty keys with array values that contain number of sent boulders, flashed boulders, and flash percentage
     const totalSends = {
         V0: [0, 0, 0],
@@ -16,14 +16,14 @@ module.exports.bouldersSent = async () => {
         V9: [0, 0, 0],
     }
     //grab all boulders that have been sent
-    const sentBoulders = await Boulder.find({ sent: true });
+    const sentBoulders = await Boulder.find({ sent: true, climber: user });
     //loop over sent boulders and record number per grade
     for (let boulder of sentBoulders) {
         let grade = boulder.grade;
         totalSends[grade][0] += 1;
     };
     //grab all flashed boulders
-    const flashedBoulders = await Boulder.find({ attempts: {$in: ['Flashed', 'Onsighted']} });
+    const flashedBoulders = await Boulder.find({ attempts: {$in: ['Flashed', 'Onsighted']}, climber: user });
     //loop over flashed boulders and record number per grade and percentage of routes flashed to sent per grade
     for (let boulder of flashedBoulders) {
         let grade = boulder.grade;
@@ -34,7 +34,7 @@ module.exports.bouldersSent = async () => {
     return totalSends;
 };
 
-module.exports.routesSent = async () => {
+module.exports.routesSent = async (user) => {
     //define an object containing difficulty keys with array values that contain number of sent routes, flashed routes, and flash percentage
     const totalSends = {
         "5.6": [0, 0, 0],
@@ -55,14 +55,14 @@ module.exports.routesSent = async () => {
         "5.13+": [0, 0, 0],
     }
     //grab all routes that have been sent
-    const sentRoutes = await Route.find({ sent: true });
+    const sentRoutes = await Route.find({ sent: true, climber: user });
     //loop over sent routes and record number per grade
     for (let route of sentRoutes) {
         let grade = route.grade;
         totalSends[grade][0] += 1;
     };
     //grab all flashed routes
-    const flashedRoutes = await Route.find({ attempts: {$in: ['Flashed', 'Onsighted']} });
+    const flashedRoutes = await Route.find({ attempts: {$in: ['Flashed', 'Onsighted']}, climber: user });
     //loop over flashed routes and record number per grade and percentage of routes flashed to sent per grade
     for (let route of flashedRoutes) {
         let grade = route.grade;
@@ -73,10 +73,10 @@ module.exports.routesSent = async () => {
     return totalSends;
 };
 
-module.exports.hardestFlashedBoulder = async () => {
-    const boulders = await Boulder.find({});
+module.exports.hardestFlashedBoulder = async (user) => {
+    const boulders = await Boulder.find({climber: user, sent: true});
 
-    let hardestBoulder = await Boulder.findOne({ attempts: {$in: ['Flashed', 'Onsighted']} });
+    let hardestBoulder = await Boulder.findOne({ attempts: {$in: ['Flashed', 'Onsighted']}, climber: user });
 
     if (boulders) {
         for (let boulder of boulders) {
@@ -97,10 +97,10 @@ module.exports.hardestFlashedBoulder = async () => {
     return hardestBoulder;
 };
 
-module.exports.hardestFlashedRoute = async () => {
-    const routes = await Route.find({});
+module.exports.hardestFlashedRoute = async (user) => {
+    const routes = await Route.find({climber: user, sent: true});
 
-    let hardestRoute = await Route.findOne({ attempts: {$in: ['Flashed', 'Onsighted']} });
+    let hardestRoute = await Route.findOne({ attempts: {$in: ['Flashed', 'Onsighted']}, climber: user });
 
     if (routes) {
         for (let route of routes) {

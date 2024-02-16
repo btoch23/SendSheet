@@ -14,26 +14,22 @@ const statsRouter = express.Router();
 
 statsRouter.route('/boulders')
 .get(isLoggedIn, catchAsync(async (req, res) => {
-    const boulders = await Boulder.find({});
-
-    let bouldersSentObj = await bouldersSent();
+    let bouldersSentObj = await bouldersSent(req.user._id);
     let bouldersSentArr = Object.entries(bouldersSentObj);
 
-    let hardestBoulder = await hardestFlashedBoulder();
+    let hardestBoulder = await hardestFlashedBoulder(req.user._id);
 
-    res.render('problems/boulderStats', { boulders, hardestBoulder, bouldersSentArr })
+    res.render('problems/boulderStats', { hardestBoulder, bouldersSentArr })
 }))
 
 statsRouter.route('/routes')
 .get(isLoggedIn, catchAsync(async (req, res) => {
-    const routes = await Route.find({});
+    let routesSentObj = await routesSent(req.user._id);
+    let routesSentArr = Object.entries(routesSentObj);
 
-    let hardestRoute = await hardestFlashedRoute();
-
-    let routesSentObj = await routesSent();
-    let routesSentArr = Object.entries(routesSentObj)
+    let hardestRoute = await hardestFlashedRoute(req.user._id);
         
-    res.render('problems/routeStats', { routes, hardestRoute, routesSentArr})
+    res.render('problems/routeStats', { hardestRoute, routesSentArr})
 }))
 
 module.exports = statsRouter;
