@@ -8,11 +8,12 @@ const {
     hardestFlashedRoute 
 } = require('../utils/statCalculations');
 const catchAsync = require('../utils/catchAsync');
+const { isLoggedIn } = require('../middleware');
 
 const statsRouter = express.Router();
 
 statsRouter.route('/boulders')
-.get(catchAsync(async (req, res) => {
+.get(isLoggedIn, catchAsync(async (req, res) => {
     const boulders = await Boulder.find({});
 
     let bouldersSentObj = await bouldersSent();
@@ -24,7 +25,7 @@ statsRouter.route('/boulders')
 }))
 
 statsRouter.route('/routes')
-.get(catchAsync(async (req, res) => {
+.get(isLoggedIn, catchAsync(async (req, res) => {
     const routes = await Route.find({});
 
     let hardestRoute = await hardestFlashedRoute();

@@ -31,4 +31,15 @@ usersRouter.route('/login')
     res.redirect('/problems');
 })
 
+usersRouter.route('/logout')
+.get((req, res) => {
+    req.logout(function (err) {
+        if (err) {
+            return next(err);
+        }
+        req.flash('success', 'See you again soon!')
+        res.redirect('/');
+    });
+})
+
 module.exports = usersRouter;

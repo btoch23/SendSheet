@@ -4,28 +4,19 @@ const Route = require('../models/route');
 const catchAsync = require('../utils/catchAsync');
 const { problemSchema } = require('../schemas');
 const ExpressError = require('../utils/ExpressError');
+const { isLoggedIn, validateProblem } = require('../middleware');
 
 const problemsRouter = express.Router();
 
-const validateProblem = (req, res, next) => {
-    const { error } = problemSchema.validate(req.body)
-    if (error) {
-        const msg = error.details.map(el => el.message).join(',')
-        throw new ExpressError(msg, 400)
-    } else {
-        next();
-    }
-}
-
 problemsRouter.route('/')
-.get(catchAsync(async (req, res) => {
+.get(isLoggedIn, catchAsync(async (req, res) => {
     const boulders = await Boulder.find({});
     const routes = await Route.find({});
     const date = new Date().toLocaleDateString('en-US');
 
     res.render('problems/journal', { boulders, routes, date });
 }))
-.post(validateProblem, catchAsync(async (req, res) => {
+.post(isLoggedIn, validateProblem, catchAsync(async (req, res) => {
     if (req.body.boulder) {
         const boulder = new Boulder(req.body.boulder);
         await boulder.save();
@@ -38,7 +29,7 @@ problemsRouter.route('/')
 }))
 
 problemsRouter.route('/:id')
-.put(validateProblem, catchAsync(async (req, res) => {
+.put(isLoggedIn, validateProblem, catchAsync(async (req, res) => {
     const { id } = req.params;
 
     if (req.body.boulder) {
@@ -59,7 +50,7 @@ problemsRouter.route('/:id')
 }))
 
 problemsRouter.route('/:id/edit')
-.get(catchAsync(async (req, res) => {
+.get(isLoggedIn, catchAsync(async (req, res) => {
     const boulder = await Boulder.findById(req.params.id);
     const route = await Route.findById(req.params.id);
 
@@ -76,12 +67,12 @@ problemsRouter.route('/:id/edit')
 }))
 
 problemsRouter.route('/newBoulder')
-.get((req, res) => {
+.get(isLoggedIn, (req, res) => {
     res.render('problems/newBoulder');
 })
 
 problemsRouter.route('/newRoute')
-.get((req, res) => {
+.get(isLoggedIn, (req, res) => {
     res.render('problems/newRoute');
 })
 
