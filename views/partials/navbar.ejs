@@ -1,10 +1,10 @@
 <nav class="navbar sticky-top navbar-expand-md py-4 bg-white">
     <div class="container-fluid">
         <div class="navbar-nav flex-row align-items-center">
-            <span class="material-symbols-outlined d-md-none ms-4 me-2">
-                <a style="color: #588157" class="text-decoration-none" href="/">landscape</a>
+            <span class="material-symbols-outlined ms-4 me-2">
+                <a onmouseover="navbrandMouseover(this)" onmouseout="navbrandMouseout(this)" style="color: #588157; font-size: 2rem" class="text-decoration-none" href="/">landscape</a>
             </span>
-            <a style="color: #588157;" class="navbar-brand d-md-none" href="/">
+            <a onmouseover="navbrandMouseover(this)" onmouseout="navbrandMouseout(this)" style="color: #588157; font-size: 1.5rem;" class="navbar-brand" href="/">
                 SendSheet
             </a>
         </div>
@@ -12,18 +12,10 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ms-4 me-auto">
+            <div class="navbar-nav ms-2 me-auto">
                 <a class="nav-link" href="/problems">Journal</a>
                 <a class="nav-link" href="/stats/boulders">Statistics</a>
                 <a class="nav-link" href="/about">About</a>
-            </div>
-            <div class="navbar-nav mx-auto align-items-center">
-                <span class="material-symbols-outlined d-none d-md-block me-2">
-                    <a onmouseover="navbrandMouseover(this)" onmouseout="navbrandMouseout(this)" style="color: #588157; font-size: 2.5rem;" class="text-decoration-none" href="/">landscape</a>
-                </span>
-                <a onmouseover="navbrandMouseover(this)" onmouseout="navbrandMouseout(this)" style="color: #588157; font-size: 2rem;" class="navbar-brand d-none d-md-block" href="/">
-                    SendSheet
-                </a>
             </div>
             <span class="navbar-nav me-4 ms-auto">
                 <% if (!currentUser) {%>

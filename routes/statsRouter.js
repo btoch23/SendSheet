@@ -1,6 +1,4 @@
 const express = require('express');
-const Boulder = require('../models/boulder');
-const Route = require('../models/route');
 const { 
     bouldersSent, 
     routesSent, 

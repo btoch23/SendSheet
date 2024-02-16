@@ -43,11 +43,20 @@ problemsRouter.route('/')
 problemsRouter.route('/:id')
 .put(isLoggedIn, validateProblem, catchAsync(async (req, res) => {
     const { id } = req.params;
-
     if (req.body.boulder) {
-        await Boulder.findByIdAndUpdate(id, { ...req.body.boulder });
+        const boulder = await Boulder.findById(id);
+        if (!boulder.climber.equals(req.user._id)) {
+            req.flash('error', 'You do not have permission to do that!');
+            return res.redirect('/problems');
+        }
+        const b = await Boulder.findByIdAndUpdate(id, { ...req.body.boulder });
     } else if (req.body.route) {
-        await Route.findByIdAndUpdate(id, { ...req.body.route });
+        const route = await Route.findById(id);
+        if (!route.climber.equals(req.user._id)) {
+            req.flash('error', 'You do not have permission to do that!');
+            return res.redirect('/problems');
+        }
+        const r = await Route.findByIdAndUpdate(id, { ...req.body.route });
     }
     req.flash('success', 'Successfully updated problem');
     res.redirect('/problems')

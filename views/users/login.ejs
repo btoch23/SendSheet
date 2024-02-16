@@ -1,25 +1,29 @@
 <% layout('layouts/boilerplate') %>
-    <h1>Log In</h1>
-    <form action="/login" class="validated-form" method="POST" novalidate>
-        <div class="form-floating mb-3">
-            <input placeholder="Username" class="form-control" type="text" name="username" id="username" required>
-            <label for="username">Username</label>
-            <div class="invalid-feedback">
-                Please enter a username
-            </div>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
+    <div class="container d-flex flex-column vh-90 align-items-center">
+        <div style="width: fit-content;" class="container rounded mx-2 pt-2 pb-3 my-5 px-4 bg-white">
+            <h5 class="py-2 display-5">Log In</h5>
+            <form action="/login" class="validated-form" method="POST" novalidate>
+                <div class="form-floating mb-3">
+                    <input placeholder="Username" class="form-control" type="text" name="username" id="username" required>
+                    <label for="username">Username</label>
+                    <div class="invalid-feedback">
+                        Please enter a username
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <input placeholder="Password" class="form-control" type="password" name="password" id="password" required>
+                    <label for="password">Password</label>
+                    <div class="invalid-feedback">
+                        Please enter a password
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <button onmouseover="routeBtnMouseover(this)" onmouseout="routeBtnMouseout(this)" style="background-color: #588157; color: #fff;" class="btn w-100">Log In</button>
+            </form>
         </div>
-        <div class="form-floating mb-3">
-            <input placeholder="Password" class="form-control" type="password" name="password" id="password" required>
-            <label for="password">Password</label>
-            <div class="invalid-feedback">
-                Please enter a password
-            </div>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-        </div>
-        <button class="btn btn-success">Log In</button>
-    </form>
+    </div>
