@@ -2,9 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const RouteSchema = new Schema({
-    color: {
-        type: String,
-    },
+    color: String,
     grade: {
         type: String,
         required: true,
@@ -20,6 +18,10 @@ const RouteSchema = new Schema({
     sent: {
         type: Boolean,
         default: false,
+    },
+    climber: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     },
     date: {
         type: String,

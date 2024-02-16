@@ -4,14 +4,24 @@ const Route = require('../models/route');
 const catchAsync = require('../utils/catchAsync');
 const { problemSchema } = require('../schemas');
 const ExpressError = require('../utils/ExpressError');
-const { isLoggedIn, validateProblem } = require('../middleware');
+const { isLoggedIn } = require('../middleware');
 
 const problemsRouter = express.Router();
 
+const validateProblem = (req, res, next) => {
+    const { error } = problemSchema.validate(req.body)
+    if (error) {
+        const msg = error.details.map(el => el.message).join(',')
+        throw new ExpressError(msg, 400)
+    } else {
+        next();
+    }
+}
+
 problemsRouter.route('/')
 .get(isLoggedIn, catchAsync(async (req, res) => {
-    const boulders = await Boulder.find({});
-    const routes = await Route.find({});
+    const boulders = await Boulder.find({climber: req.user._id});
+    const routes = await Route.find({climber: req.user._id});
     const date = new Date().toLocaleDateString('en-US');
 
     res.render('problems/journal', { boulders, routes, date });
@@ -19,9 +29,11 @@ problemsRouter.route('/')
 .post(isLoggedIn, validateProblem, catchAsync(async (req, res) => {
     if (req.body.boulder) {
         const boulder = new Boulder(req.body.boulder);
+        boulder.climber = req.user._id;
         await boulder.save();
     } else if (req.body.route) {
         const route = new Route(req.body.route);
+        route.climber = req.user._id;
         await route.save();
     }
     req.flash('success', 'Successfully logged a new problem')
