@@ -26,9 +26,12 @@
                 </a>
             </div>
             <span class="navbar-nav me-4 ms-auto">
-                <a class="nav-link ps-4" href="/login">Log In</a>
-                <a class="nav-link" href="/logout">Log Out</a>
-                <a onmouseover="signupBtnMouseover(this)" onmouseout="signupBtnMouseout(this)" style="background-color: #f6aca2;" class="rounded nav-link text-white ps-4 px-md-3 mx-md-2" href="/register">Sign Up</a>
+                <% if (!currentUser) {%>
+                    <a class="nav-link ps-4" href="/login">Log In</a>
+                    <a onmouseover="signupBtnMouseover(this)" onmouseout="signupBtnMouseout(this)" style="background-color: #f6aca2;" class="rounded nav-link text-white ps-4 px-md-3 mx-md-2" href="/register">Sign Up</a>
+                    <% } else { %>
+                        <a class="nav-link ps-4" href="/logout">Log Out</a>
+                        <% } %>
             </span>
         </div>
     </div>
