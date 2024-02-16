@@ -13,6 +13,7 @@ const User = require('./models/user');
 
 const statsRouter = require('./routes/statsRouter');
 const problemsRouter = require('./routes/problemsRouter');
+const usersRouter = require('./routes/usersRouter');
 
 mongoose.connect('mongodb://localhost:27017/sendSheet');
 
@@ -62,6 +63,7 @@ app.use((req, res, next) => {
 
 app.use('/stats', statsRouter);
 app.use('/problems', problemsRouter);
+app.use('/', usersRouter);
 
 app.get('/', (req, res) => {
     res.render('home')
