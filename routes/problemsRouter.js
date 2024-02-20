@@ -1,6 +1,4 @@
 const express = require('express');
-const Boulder = require('../models/boulder');
-const Route = require('../models/route');
 const catchAsync = require('../utils/catchAsync');
 const { isLoggedIn, isAuthor, validateProblem } = require('../middleware');
 const problems = require('../controllers/problems');
