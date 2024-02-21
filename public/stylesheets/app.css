@@ -1,19 +1,19 @@
-#logBoulderBtn {
+#boulderBtn {
     background-color: #586994;
     color: #fff;
     transition: all 0.3s;
 }
-#logBoulderBtn:hover {
+#boulderBtn:hover {
     background-color: #465476;
 }
 
-#logRouteBtn {
+#routeBtn {
     background-color: #588157;
     color: #fff;
     transition: all 0.3s;
 }
 
-#logRouteBtn:hover {
+#routeBtn:hover {
     background-color: #466746;
 }
 
