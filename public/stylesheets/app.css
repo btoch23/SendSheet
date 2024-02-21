@@ -1,0 +1,74 @@
+#logBoulderBtn {
+    background-color: #586994;
+    color: #fff;
+    transition: all 0.3s;
+}
+#logBoulderBtn:hover {
+    background-color: #465476;
+}
+
+#logRouteBtn {
+    background-color: #588157;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+#logRouteBtn:hover {
+    background-color: #466746;
+}
+
+#updateBtn {
+    border: 1px solid #F6ACA2; 
+    color: #F6ACA2;
+    transition: all 0.3s;
+}
+
+#updateBtn:hover {
+    background-color: #F6ACA2;
+    color: #fff;
+}
+
+#deleteBtn {
+    border: 1px solid #ee6352; 
+    color: #ee6352;
+    transition: all 0.3s;
+}
+
+#deleteBtn:hover {
+    background-color: #ee6352;
+    color: #fff;
+}
+
+#signupLink {
+    color: #f6aca2 !important;
+    transition: all 0.3s !important;
+}
+
+#signupLink:hover {
+    color: #da9990 !important;
+}
+
+#signupBtn {
+    background-color: #f6aca2;
+    transition: all 0.3s;
+}
+
+#signupBtn:hover {
+    background-color: #dd9b92;
+}
+
+#navBrandIcon {    
+    color: #588157; 
+    font-size: 2rem;
+    transition: all 0.3s;
+}
+
+#navBrand {
+    color: #588157; 
+    font-size: 1.5rem;
+    transition: all 0.3s;
+}
+
+#navBrandIcon:hover, #navBrand:hover {    
+    color: #476947;
+}

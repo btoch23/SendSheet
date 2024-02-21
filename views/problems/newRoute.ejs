@@ -6,22 +6,10 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-floating mb-3">
-                            <select class="form-select" name="route[color]" id="color" required>
-                                <option selcted></option>
-                                <option value="Red">Red</option>
-                                <option value="Blue">Blue</option>
-                                <option value="Yellow">Yellow</option>
-                                <option value="Pink">Pink</option>
-                                <option value="Purple">Purple</option>
-                                <option value="Green">Green</option>
-                                <option value="Orange">Orange</option>
-                                <option value="Black">Black</option>
-                                <option value="White">White</option>
-                                <option value="">Other</option>
-                            </select>
+                            <input placeholder="Color" class="form-control" type="text" name="route[color]" id="color" required>
                             <label for="color">Color</label>
                             <div class="invalid-feedback">
-                                Please choose a color
+                                Please enter a color
                             </div>
                             <div class="valid-feedback">
                                 Looks good
@@ -106,7 +94,7 @@
                     </label>
                 </div>
                 <div class="mb-3">
-                    <button onmouseover="routeBtnMouseover(this)" onmouseout="routeBtnMouseout(this)" style="background-color: #588157; color: white;" class="btn">Log Route</button>
+                    <button id="logRouteBtn" class="btn">Log Route</button>
                 </div>
             </form>
             <a style="color: #ee6352;" class="text-decoration-none" href="/problems">Cancel</a>

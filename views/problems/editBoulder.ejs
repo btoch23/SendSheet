@@ -6,24 +6,10 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-floating mb-3">
-                            <select class="form-select" name="boulder[color]" id="color" required>
-                                <option selcted>
-                                    <%= boulder.color %>
-                                </option>
-                                <option value="Red">Red</option>
-                                <option value="Blue">Blue</option>
-                                <option value="Yellow">Yellow</option>
-                                <option value="Pink">Pink</option>
-                                <option value="Purple">Purple</option>
-                                <option value="Green">Green</option>
-                                <option value="Orange">Orange</option>
-                                <option value="Black">Black</option>
-                                <option value="White">White</option>
-                                <option value="">Other</option>
-                            </select>
+                            <input value="<%= boulder.color %>" placeholder="Color" class="form-control" type="text" name="boulder[color]" id="color" required>
                             <label for="color">Color</label>
                             <div class="invalid-feedback">
-                                Please choose a color
+                                Please enter a color
                             </div>
                             <div class="valid-feedback">
                                 Looks good
@@ -88,7 +74,7 @@
                     </div>
                     <div class="col-6">
                         <div class="form-floating mb-3">
-                            <input value="<%= boulder.location %>" class="form-control" type="text" name="boulder[location]" id="location" required>
+                            <input value="<%= boulder.location %>" placeholder="Location" class="form-control" type="text" name="boulder[location]" id="location" required>
                             <label for="location">Location</label>
                             <div class="invalid-feedback">
                                 Please enter a location
@@ -106,13 +92,13 @@
                         </label>
                 </div>
                 <div class="mb-3">
-                    <button onmouseover="boulderBtnMouseover(this)" onmouseout="boulderBtnMouseout(this)" style="background-color: #586994; color: #fff;" class="btn">Update Boulder</button>
+                    <button id="logBoulderBtn" class="btn">Update Boulder</button>
                 </div>
             </form>
             <div class="d-flex justify-content-between align-items-center">
                 <a style="color: #ee6352;" class="text-decoration-none" href="/problems">Cancel</a>
                 <form action="/problems/<%= boulder._id %>?_method=DELETE" method="POST">
-                    <button onmouseover="deleteBtnMouseover(this)" onmouseout="deleteBtnMouseout(this)" style="border: 1px solid #ee6352; color: #ee6352;" class="btn">Delete Boulder</button>
+                    <button id="deleteBtn" class="btn">Delete Boulder</button>
                 </form>
             </div>
         </div>

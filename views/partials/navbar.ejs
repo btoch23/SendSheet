@@ -2,9 +2,9 @@
     <div class="container-fluid">
         <div class="navbar-nav flex-row align-items-center">
             <span class="material-symbols-outlined ms-4 me-2">
-                <a onmouseover="navbrandMouseover(this)" onmouseout="navbrandMouseout(this)" style="color: #588157; font-size: 2rem" class="text-decoration-none" href="/">landscape</a>
+                <a id="navBrandIcon" class="text-decoration-none" href="/">landscape</a>
             </span>
-            <a onmouseover="navbrandMouseover(this)" onmouseout="navbrandMouseout(this)" style="color: #588157; font-size: 1.5rem;" class="navbar-brand" href="/">
+            <a id="navBrand" class="navbar-brand" href="/">
                 SendSheet
             </a>
         </div>
@@ -20,7 +20,7 @@
             <span class="navbar-nav me-4 ms-auto">
                 <% if (!currentUser) {%>
                     <a class="nav-link ps-4" href="/login">Log In</a>
-                    <a onmouseover="signupBtnMouseover(this)" onmouseout="signupBtnMouseout(this)" style="background-color: #f6aca2;" class="rounded nav-link text-white ps-4 px-md-3 mx-md-2" href="/register">Sign Up</a>
+                    <a id="signupBtn" class="rounded nav-link text-white ps-4 px-md-3 mx-md-2" href="/register">Sign Up</a>
                     <% } else { %>
                         <a class="nav-link ps-4" href="/logout">Log Out</a>
                         <% } %>
@@ -28,22 +28,3 @@
         </div>
     </div>
 </nav>
-
-<script>
-    const signupBtnMouseover = (x) => {
-        x.style.backgroundColor = '#da9990'
-        x.style.transition = 'all 0.3s'
-    }
-    const signupBtnMouseout = (x) => {
-        x.style.backgroundColor = '#f6aca2'
-    }
-
-    const navbrandMouseover = (x) => {
-        x.style.color = '#476947'
-        x.style.transition = 'all 0.3s'
-    }
-    const navbrandMouseout = (x) => {
-        x.style.color = '#588157'
-    }
-
-</script>

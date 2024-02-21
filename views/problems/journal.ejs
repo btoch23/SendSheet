@@ -11,8 +11,8 @@
     </div>
     <div class="container d-flex justify-content-center mb-4">
         <div class="container w-md-50 d-flex justify-content-center mt-3">
-            <a onmouseover="boulderBtnMouseover(this)" onmouseout="boulderBtnMouseout(this)" style="background-color: #586994; color: #fff;" class="btn me-3" href="/problems/newBoulder">Log Boulder</a>
-            <a onmouseover="routeBtnMouseover(this)" onmouseout="routeBtnMouseout(this)" style="background-color: #588157; color: #fff;" class="btn ms-3" href="/problems/newRoute">Log Route</a>
+            <a id="logBoulderBtn" class="btn me-3" href="/problems/newBoulder">Log Boulder</a>
+            <a id="logRouteBtn" class="btn ms-3" href="/problems/newRoute">Log Route</a>
         </div>
     </div>
     <div class="container d-flex flex-column flex-xl-row mb-5">
@@ -47,7 +47,7 @@
                                     </p>
                                 </div>
                                 <div class="col-4 col-md-3 text-center">
-                                    <a onmouseover="updateBtnMouseover(this)" onmouseout="updateBtnMouseout(this)" style="border: 1px solid #F6ACA2; color: #F6ACA2;" class="text-decoration-none rounded px-3 py-2" href="/problems/<%= boulder._id %>/edit">
+                                    <a id="updateBtn" class="text-decoration-none rounded px-3 py-2" href="/problems/<%= boulder._id %>/edit">
                                         Update
                                     </a>
                                 </div>
@@ -81,7 +81,7 @@
                                                     </p>
                                                 </div>
                                                 <div class="col-4 col-md-3 text-center">
-                                                    <a onmouseover="updateBtnMouseover(this)" onmouseout="updateBtnMouseout(this)" style="border: 1px solid #F6ACA2; color: #F6ACA2;" class="text-decoration-none rounded px-3 py-2" href="/problems/<%= route._id %>/edit">
+                                                    <a id="updateBtn" class="text-decoration-none rounded px-3 py-2" href="/problems/<%= route._id %>/edit">
                                                         Update
                                                     </a>
                                                 </div>
@@ -119,7 +119,7 @@
                                     </p>
                                 </div>
                                 <div class="col-4 col-md-3 text-center mb-3">
-                                    <a onmouseover="updateBtnMouseover(this)" onmouseout="updateBtnMouseout(this)" style="border: 1px solid #F6ACA2; color: #F6ACA2;" class="text-decoration-none rounded px-3 py-2" href="/problems/<%= boulder._id %>/edit">
+                                    <a id="updateBtn" class="text-decoration-none rounded px-3 py-2" href="/problems/<%= boulder._id %>/edit">
                                         Update
                                     </a>
                                 </div>
@@ -150,7 +150,7 @@
                                                     </p>
                                                 </div>
                                                 <div class="col-4 col-md-3 mb-3 text-center">
-                                                    <a onmouseover="updateBtnMouseover(this)" onmouseout="updateBtnMouseout(this)" style="border: 1px solid #F6ACA2; color: #F6ACA2;" class="text-decoration-none rounded px-3 py-2" href="/problems/<%= route._id %>/edit">
+                                                    <a id="updateBtn" class="text-decoration-none rounded px-3 py-2" href="/problems/<%= route._id %>/edit">
                                                         Update
                                                     </a>
                                                 </div>
