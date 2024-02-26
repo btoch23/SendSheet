@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate') %>
     <div class="container d-flex flex-column">
-        <div class="container rounded mx-2 pt-2 pb-3 mb-5 bg-white">
+        <div class="container rounded mx-2 pt-2 pb-3 mb-5 bg-white shadow">
             <h4 class="display-4 text-center">Hardest Boulder Flashed</h4>
             <h5 class="display-5 text-center"><strong>
                     <% if (hardestBoulder===null) { %>
@@ -11,7 +11,7 @@
                 </strong>
             </h5>
             <div class="container d-flex justify-content-center mt-4">
-                <div class="card mb-3 w-75">
+                <div class="card shadow mb-3 w-75">
                     <div style="background-color: #586994;" class="card-header">
                         <ul class="nav nav-tabs card-header-tabs">
                             <li class="nav-item">
