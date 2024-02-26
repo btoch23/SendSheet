@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-floating mb-3">
-                            <input value="<%= boulder.color %>" placeholder="Color" class="form-control" type="text" name="boulder[color]" id="color" required>
+                            <input value="<%= boulder.color %>" placeholder="Color" class="form-control shadow" type="text" name="boulder[color]" id="color" required>
                             <label for="color">Color</label>
                             <div class="invalid-feedback">
                                 Please enter a color
@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-6">
                         <div class="form-floating mb-3">
-                            <select class="form-select" name="boulder[grade]" id="grade" required>
+                            <select class="form-select shadow" name="boulder[grade]" id="grade" required>
                                 <option selcted>
                                     <%= boulder.grade %>
                                 </option>
@@ -46,7 +46,7 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-floating mb-3">
-                            <select class="form-select" name="boulder[attempts]" id="attempts" required>
+                            <select class="form-select shadow" name="boulder[attempts]" id="attempts" required>
                                 <option selcted>
                                     <%= boulder.attempts %>
                                 </option>
@@ -74,7 +74,7 @@
                     </div>
                     <div class="col-6">
                         <div class="form-floating mb-3">
-                            <input value="<%= boulder.location %>" placeholder="Location" class="form-control" type="text" name="boulder[location]" id="location" required>
+                            <input value="<%= boulder.location %>" placeholder="Location" class="form-control shadow" type="text" name="boulder[location]" id="location" required>
                             <label for="location">Location</label>
                             <div class="invalid-feedback">
                                 Please enter a location
