@@ -15,13 +15,14 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 const mongoSanitize = require('express-mongo-sanitize');
+const MongoStore = require('connect-mongo');
 
 const statsRouter = require('./routes/statsRouter');
 const problemsRouter = require('./routes/problemsRouter');
 const usersRouter = require('./routes/usersRouter');
 
-const dbUrl = process.env.DB_URL;
-// 'mongodb://localhost:27017/sendSheet'
+// const dbUrl = process.env.DB_URL;
+const dbUrl = 'mongodb://localhost:27017/sendSheet';
 mongoose.connect(dbUrl);
 
 const db = mongoose.connection;
@@ -44,7 +45,20 @@ app.use(mongoSanitize({
     replaceWith: '_'
 }));
 
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    touchAfter: 24 * 60 * 60,
+    crypto: {
+        secret: 'thisshouldbeabettersecret!'
+    }
+});
+
+store.on("error", function(e){
+    console.log('Session store error', e)
+})
+
 const sessionConfig = {
+    store,
     name: 'session',
     secret: 'thisshouldbeabettersecret',
     resave: false,
