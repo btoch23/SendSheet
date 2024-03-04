@@ -16,6 +16,7 @@ const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 const mongoSanitize = require('express-mongo-sanitize');
 const MongoStore = require('connect-mongo');
+const favicon = require('serve-favicon');
 
 const statsRouter = require('./routes/statsRouter');
 const problemsRouter = require('./routes/problemsRouter');
@@ -44,6 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(mongoSanitize({
     replaceWith: '_'
 }));
+app.use(favicon(path.join(__dirname, 'favicon.ico')))
 
 const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
 
