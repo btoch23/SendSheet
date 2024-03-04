@@ -11,7 +11,7 @@
                 </strong>
             </h5>
             <div class="container d-flex justify-content-center mt-4">
-                <div class="card shadow mb-3 w-75">
+                <div class="card shadow mb-3 col-md-8">
                     <div style="background-color: #586994;" class="card-header">
                         <ul class="nav nav-tabs card-header-tabs">
                             <li class="nav-item">
@@ -31,7 +31,7 @@
                                         </strong>
                                     </p>
                                 </div>
-                                <div class="col-4 mb-1 border-bottom border-black">
+                                <div class="col-5 col-md-4 mb-1 border-bottom border-black">
                                     <p class="card-text text-center">
                                         <% if (arr[1][0] !==1) { %>
                                             <%= arr[1][0] %> sends
@@ -40,12 +40,12 @@
                                                         <% } %>
                                     </p>
                                 </div>
-                                <div class="col-4 mb-1 border-bottom border-black">
+                                <div class="col-5 col-md-4 mb-1 border-bottom border-black">
                                     <p class="card-text text-center">
                                         <%= arr[1][1] %> flashed
                                     </p>
                                 </div>
-                                <div class="col-2 mb-1 border-bottom border-black">
+                                <div class="d-none d-md-block col-2 mb-1 border-bottom border-black">
                                     <p class="card-text text-end"><strong>
                                             <%= arr[1][2] %>%
                                         </strong>

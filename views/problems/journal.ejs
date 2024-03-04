@@ -23,7 +23,7 @@
                     <% for (let boulder of boulders) { %>
                         <% if (boulder.sent && boulder.date===date) { %>
                             <div style="background-color: #586994;" class="row rounded w-100 text-white pt-3 my-2">
-                                <div class="col-4 col-md-3 text-center">
+                                <div class="col-6 col-sm-4 col-md-3 text-center">
                                     <p>
                                         <strong>
                                             <%= boulder.title %>
@@ -37,7 +37,7 @@
                                         </em>
                                     </p>
                                 </div>
-                                <div class="col-4 col-md-3 text-center">
+                                <div class="d-none d-sm-block col-sm-4 col-md-3 text-center">
                                     <p>
                                         <% if (boulder.attempts==='Flashed' || boulder.attempts==='Onsighted' ) { %>
                                             <%= boulder.attempts %>
@@ -46,7 +46,7 @@
                                                         <% } %>
                                     </p>
                                 </div>
-                                <div class="col-4 col-md-3 text-center">
+                                <div class="col-6 col-sm-4 col-md-3 text-center">
                                     <a id="updateBtn" class="text-decoration-none rounded px-3 py-2" href="/problems/<%= boulder._id %>/edit">
                                         Update
                                     </a>
@@ -57,21 +57,21 @@
                                     <% for (let route of routes) { %>
                                         <% if (route.sent && route.date===date) { %>
                                             <div style="background-color: #588157;" class="row rounded w-100 text-white pt-3 my-2">
-                                                <div class="col-4 col-md-3 text-center">
+                                                <div class="col-6 col-sm-4 col-md-3 text-center">
                                                     <p>
                                                         <strong>
                                                             <%= route.title %>
                                                         </strong>
                                                     </p>
                                                 </div>
-                                                <div class="col-md-3 d-none d-md-block text-center">
+                                                <div class="d-none d-md-block col-md-3 text-center">
                                                     <p>
                                                         <em>
                                                             <%= route.location %>
                                                         </em>
                                                     </p>
                                                 </div>
-                                                <div class="col-4 col-md-3 text-center">
+                                                <div class="d-none d-sm-block col-sm-4 col-md-3 text-center">
                                                     <p>
                                                         <% if (route.attempts==='Flashed' ||route.attempts==='Onsighted' ) { %>
                                                             <%= route.attempts %>
@@ -80,7 +80,7 @@
                                                                         <% } %>
                                                     </p>
                                                 </div>
-                                                <div class="col-4 col-md-3 text-center">
+                                                <div class="col-6 col-sm-4 col-md-3 text-center">
                                                     <a id="updateBtn" class="text-decoration-none rounded px-3 py-2" href="/problems/<%= route._id %>/edit">
                                                         Update
                                                     </a>
@@ -98,7 +98,7 @@
                     <% for (let boulder of boulders) { %>
                         <% if (!boulder.sent) { %>
                             <div style="background-color: #586994;" class="row w-100 align-items-center rounded text-white ps-2 pt-3 my-2">
-                                <div class="col-4 col-md-3 text-center">
+                                <div class="col-6 col-sm-4 col-md-3 text-center">
                                     <p>
                                         <strong>
                                             <%= boulder.title %>
@@ -106,19 +106,19 @@
                                         <%= boulder.date %>
                                     </p>
                                 </div>
-                                <div class="col-md-3 d-none d-md-block text-center">
+                                <div class="d-none d-md-block col-md-3  text-center">
                                     <p>
                                         <em>
                                             <%= boulder.location %>
                                         </em>
                                     </p>
                                 </div>
-                                <div class="col-4 col-md-3 text-center">
+                                <div class="d-none d-sm-block col-sm-4 col-md-3 text-center">
                                     <p>
                                         <%= boulder.attempts %> attempts
                                     </p>
                                 </div>
-                                <div class="col-4 col-md-3 text-center mb-3">
+                                <div class="col-6 col-sm-4 col-md-3 text-center mb-3">
                                     <a id="updateBtn" class="text-decoration-none rounded px-3 py-2" href="/problems/<%= boulder._id %>/edit">
                                         Update
                                     </a>
@@ -129,7 +129,7 @@
                                     <% for (let route of routes) { %>
                                         <% if (!route.sent) { %>
                                             <div style="background-color: #588157;" class="row rounded align-items-center w-100 text-white ps-2 pt-3 my-2">
-                                                <div class="col-4 col-md-3 text-center">
+                                                <div class="col-6 col-sm-4 col-md-3 text-center">
                                                     <p>
                                                         <strong>
                                                             <%= route.title %>
@@ -137,19 +137,19 @@
                                                         <%= route.date %>
                                                     </p>
                                                 </div>
-                                                <div class="col-md-3 d-none d-md-block text-center">
+                                                <div class="d-none d-md-block col-md-3  text-center">
                                                     <p>
                                                         <em>
                                                             <%= route.location %>
                                                         </em>
                                                     </p>
                                                 </div>
-                                                <div class="col-4 col-md-3 text-center">
+                                                <div class="d-none d-sm-block col-sm-4 col-md-3 text-center">
                                                     <p>
                                                         <%= route.attempts %> attempts
                                                     </p>
                                                 </div>
-                                                <div class="col-4 col-md-3 mb-3 text-center">
+                                                <div class="col-6 col-sm-4 col-md-3 mb-3 text-center">
                                                     <a id="updateBtn" class="text-decoration-none rounded px-3 py-2" href="/problems/<%= route._id %>/edit">
                                                         Update
                                                     </a>
