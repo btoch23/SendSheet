@@ -48,6 +48,15 @@
     color: #da9990 !important;
 }
 
+#loginLink {
+    color: #f6aca2 !important;
+    transition: all 0.3s !important;
+}
+
+#loginLink:hover {
+    color: #da9990 !important;
+}
+
 #signupBtn {
     background-color: #f6aca2;
     transition: all 0.3s;
