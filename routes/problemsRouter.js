@@ -9,6 +9,9 @@ problemsRouter.route('/')
 .get(isLoggedIn, catchAsync(problems.journal))
 .post(isLoggedIn, validateProblem, catchAsync(problems.newProblem))
 
+problemsRouter.route('/all')
+.get(isLoggedIn, catchAsync(problems.all))
+
 problemsRouter.route('/:id')
 .put(isLoggedIn, isAuthor, validateProblem, catchAsync(problems.updateProblem))
 .delete(isLoggedIn, isAuthor, catchAsync(problems.deleteProblem))

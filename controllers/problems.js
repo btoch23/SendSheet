@@ -9,6 +9,15 @@ module.exports.journal = async (req, res) => {
     res.render('problems/journal', { boulders, routes, date });
 }
 
+module.exports.all = async (req, res) => {
+    const boulders = await Boulder.find({climber: req.user._id});
+    const routes = await Route.find({climber: req.user._id});
+
+    console.log(boulders)
+
+    res.render('problems/all', { boulders, routes });
+}
+
 module.exports.newBoulderForm = (req, res) => {
     res.render('problems/newBoulder');
 }

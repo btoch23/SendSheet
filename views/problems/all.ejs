@@ -1,0 +1,74 @@
+<% layout('layouts/boilerplate') %>
+    <div class="container d-flex flex-column">
+        <div class="container rounded mx-2 pt-2 pb-3 mb-5 bg-white shadow">
+            <h5 class="display-5 text-center">
+                All Problems
+            </h5>
+            <div class="container d-flex flex-column align-items center px-md-5">
+                <% for (let boulder of boulders) {%>
+                    <div style="background-color: #586994;" class="row rounded text-white pt-3 my-2">
+                        <div class="col-4 col-md-3 text-center">
+                            <p>
+                                <%= boulder.date %>
+                            </p>
+                        </div>
+                        <div class="col-4 col-md-3 text-center">
+                            <p>
+                                <strong>
+                                    <%= boulder.title %>
+                                </strong>
+                            </p>
+                        </div>
+                        <div class="d-none d-md-block col-3 text-center">
+                            <p>
+                                <em>
+                                    <%= boulder.location %>
+                                </em>
+                            </p>
+                        </div>
+                        <div class="col-4 col-md-3 text-center">
+                            <p>
+                                <% if (boulder.sent) { %>
+                                    Sent
+                                    <% } else { %>
+                                        Projecting
+                                        <% } %>
+                            </p>
+                        </div>
+                    </div>
+                    <% } %>
+                        <% for (let route of routes) {%>
+                            <div style="background-color: #588157;" class="row rounded text-white pt-3 my-2">
+                                <div class="col-4 col-md-3 text-center">
+                                    <p>
+                                        <%= route.date %>
+                                    </p>
+                                </div>
+                                <div class="col-4 col-md-3 text-center">
+                                    <p>
+                                        <strong>
+                                            <%= route.title %>
+                                        </strong>
+                                    </p>
+                                </div>
+                                <div class="d-none d-md-block col-3 text-center">
+                                    <p>
+                                        <em>
+                                            <%= route.location %>
+                                        </em>
+                                    </p>
+                                </div>
+                                <div class="col-4 col-md-3 text-center">
+                                    <p>
+                                        <% if (route.sent) { %>
+                                            Sent
+                                            <% } else { %>
+                                                Projecting
+                                                <% } %>
+                                    </p>
+                                </div>
+                            </div>
+                            <% } %>
+            </div>
+        </div>
+    </div>
