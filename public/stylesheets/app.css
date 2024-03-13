@@ -66,6 +66,15 @@
     background-color: #dd9b92;
 }
 
+#signupBtnSmall {
+    color: #f6aca2;
+    transition: all 0.3s;
+}
+
+#signupBtnSmall:hover {
+    color: #dd9b92;
+}
+
 #navBrandIcon {    
     color: #588157; 
     font-size: 2rem;
