@@ -1,10 +1,63 @@
 <% layout('layouts/boilerplate') %>
-    <div class="row">
-        <h5 class="display-5 text-center">
-            <% if (boulder) { %>
-                <%= boulder.title %>
-                    <% } else if (route) {%>
-                        <%= route.title %>
-                            <% } %>
-        </h5>
+    <div class="container d-flex flex-column">
+        <div class="container d-flex justify-content-center mt-4">
+            <div class="card shadow col-md-4">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <% if (boulder) { %>
+                            <%= boulder.title %>
+                                <% } else if (route) {%>
+                                    <%= route.title %>
+                                        <% } %>
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">
+                        <% if (boulder) { %>
+                            <%= boulder.location %>
+                                <% } else if (route) {%>
+                                    <%= route.location %>
+                                        <% } %>
+                    </h6>
+                    <ul class="list-group list-group-flush my-3">
+                        <li class="list-group-item">
+                            <strong>Sent: </strong>
+                            <% if (boulder && boulder.sent) { %>
+                                Yes
+                                <% } else if (boulder && !boulder.sent) {%>
+                                    Not yet
+                                    <% } else if (route && route.sent) { %>
+                                        Yes
+                                        <% } else if (route && !route.sent) {%>
+                                            Not yet
+                                            <% } %>%>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Attempts: </strong>
+                            <% if (boulder) {%>
+                                <%= boulder.attempts %>
+                                    <% } else if (route) {%>
+                                        <%= route.attempts %>
+                                            <% } %>
+                        </li>
+                    </ul>
+                    <div class="text-center mb-2">
+                        <a <% if (boulder) {%>
+                            href="/problems/<%= boulder._id %>/edit"
+                                <% } else if (route) {%>
+                                    href="/problems/<%= route._id %>/edit"
+                                        <% } %>
+                                            class="text-decoration-none rounded px-3 py-2"
+                                            id='updateBtn'>
+                                            Edit Problem
+                        </a>
+                    </div>
+                </div>
+                <div class="card-footer text-center text-body-secondary">
+                    <% if (boulder) {%>
+                        <%= boulder.date %>
+                            <% } else if (route) { %>
+                                <%= route.date %>
+                                    <% } %>
+                </div>
+            </div>
+        </div>
     </div>
