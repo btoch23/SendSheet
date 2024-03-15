@@ -6,59 +6,65 @@
             </h5>
             <div class="container d-flex flex-column align-items center px-md-5">
                 <% for (let boulder of boulders) {%>
-                    <div style="background-color: #586994;" class="row rounded text-white pt-3 my-2">
-                        <div class="col-4 col-md-3 text-center">
-                            <p>
-                                <%= boulder.date %>
-                            </p>
-                        </div>
-                        <div class="col-4 col-md-3 text-center">
-                            <p>
-                                <strong>
-                                    <%= boulder.title %>
-                                </strong>
-                            </p>
-                        </div>
-                        <div class="d-none d-md-block col-3 text-center">
-                            <p>
-                                <em>
-                                    <%= boulder.location %>
-                                </em>
-                            </p>
-                        </div>
-                        <div class="col-4 col-md-3 text-center">
-                            <a id="updateBtn" class="text-decoration-none rounded px-3 py-2" href="/problems/<%= boulder._id %>/view">
-                                View
-                            </a>
-                        </div>
+                    <div <% if (boulder.sent) {%>
+                        id="sentProblem"
+                        <% } %>
+                            style="background-color: #586994;" class="row rounded text-white pt-3 my-2">
+                            <div class="col-4 col-md-3 text-center">
+                                <p>
+                                    <%= boulder.date %>
+                                </p>
+                            </div>
+                            <div class="col-4 col-md-3 text-center">
+                                <p>
+                                    <strong>
+                                        <%= boulder.title %>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div class="d-none d-md-block col-3 text-center">
+                                <p>
+                                    <em>
+                                        <%= boulder.location %>
+                                    </em>
+                                </p>
+                            </div>
+                            <div class="col-4 col-md-3 text-center">
+                                <a id="updateBtn" class="text-decoration-none rounded px-3 py-2" href="/problems/<%= boulder._id %>/view">
+                                    View
+                                </a>
+                            </div>
                     </div>
                     <% } %>
                         <% for (let route of routes) {%>
-                            <div style="background-color: #588157;" class="row rounded text-white pt-3 my-2">
-                                <div class="col-4 col-md-3 text-center">
-                                    <p>
-                                        <%= route.date %>
-                                    </p>
-                                </div>
-                                <div class="col-4 col-md-3 text-center">
-                                    <p>
-                                        <strong>
-                                            <%= route.title %>
-                                        </strong>
-                                    </p>
-                                </div>
-                                <div class="d-none d-md-block col-3 text-center">
-                                    <p>
-                                        <em>
-                                            <%= route.location %>
-                                        </em>
-                                    </p>
-                                </div>
-                                <div class="col-4 col-md-3 text-center">
-                                    <a id="updateBtn" class="text-decoration-none rounded px-3 py-2" href="/problems/<%= route._id %>/view">
-                                        View
-                                    </a>
-                                </div>
+                            <div <% if (route.sent) {%>
+                                id="sentProblem"
+                                <% } %>
+                                    style="background-color: #588157;" class="row rounded text-white pt-3 my-2">
+                                    <div class="col-4 col-md-3 text-center">
+                                        <p>
+                                            <%= route.date %>
+                                        </p>
+                                    </div>
+                                    <div class="col-4 col-md-3 text-center">
+                                        <p>
+                                            <strong>
+                                                <%= route.title %>
+                                            </strong>
+                                        </p>
+                                    </div>
+                                    <div class="d-none d-md-block col-3 text-center">
+                                        <p>
+                                            <em>
+                                                <%= route.location %>
+                                            </em>
+                                        </p>
+                                    </div>
+                                    <div class="col-4 col-md-3 text-center">
+                                        <a id="updateBtn" class="text-decoration-none rounded px-3 py-2" href="/problems/<%= route._id %>/view">
+                                            View
+                                        </a>
+                                    </div>
                             </div>
                             <% } %>
             </div>

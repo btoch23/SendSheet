@@ -90,3 +90,8 @@
 #navBrandIcon:hover, #navBrand:hover {    
     color: #476947;
 }
+
+#sentProblem {
+    -webkit-box-shadow: 0px 0px 1px 4px #FFD639; 
+    box-shadow: 0px 0px 1px 4px #FFD639;
+}
