@@ -38,6 +38,20 @@ module.exports.newProblem = async (req, res) => {
     res.redirect('/problems');
 }
 
+module.exports.viewProblem = async (req, res) => {
+    const { id } = req.params;
+
+    const boulder = await Boulder.findById(id);
+    const route = await Route.findById(id);
+
+    if (!boulder && !route) {
+        req.flash('error', 'Cannot find that problem');
+        res.redirect('/problems/all');
+    } else {
+        res.render('problems/viewProblem',  { boulder, route });
+    }
+}
+
 module.exports.updateProblem = async (req, res) => {
     const { id } = req.params;
 

@@ -16,6 +16,9 @@ problemsRouter.route('/:id')
 .put(isLoggedIn, isAuthor, validateProblem, catchAsync(problems.updateProblem))
 .delete(isLoggedIn, isAuthor, catchAsync(problems.deleteProblem))
 
+problemsRouter.route('/:id/view')
+.get(isLoggedIn, isAuthor, catchAsync(problems.viewProblem))
+
 problemsRouter.route('/:id/edit')
 .get(isLoggedIn, isAuthor, catchAsync(problems.editForm))
 

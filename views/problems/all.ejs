@@ -27,13 +27,9 @@
                             </p>
                         </div>
                         <div class="col-4 col-md-3 text-center">
-                            <p>
-                                <% if (boulder.sent) { %>
-                                    Sent
-                                    <% } else { %>
-                                        Projecting
-                                        <% } %>
-                            </p>
+                            <a id="updateBtn" class="text-decoration-none rounded px-3 py-2" href="/problems/<%= boulder._id %>/view">
+                                View
+                            </a>
                         </div>
                     </div>
                     <% } %>
@@ -59,13 +55,9 @@
                                     </p>
                                 </div>
                                 <div class="col-4 col-md-3 text-center">
-                                    <p>
-                                        <% if (route.sent) { %>
-                                            Sent
-                                            <% } else { %>
-                                                Projecting
-                                                <% } %>
-                                    </p>
+                                    <a id="updateBtn" class="text-decoration-none rounded px-3 py-2" href="/problems/<%= route._id %>/view">
+                                        View
+                                    </a>
                                 </div>
                             </div>
                             <% } %>
